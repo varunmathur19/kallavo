@@ -3,6 +3,8 @@ import Header from "../component/home/Header";
 import Hero from "../component/home/Hero";
 import Banner from "../component/home/Banner";
 import Product  from "../component/home/Product";
+import BannerImage from "../component/home/Bannerimage";
+import Gallery from "../component/home/Gallery";
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
       <Hero />
       <Banner/>
       <Product/>
+      <BannerImage/>
+      <Gallery/>
     </>
   );
 }

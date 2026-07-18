@@ -61,11 +61,12 @@ const Banner = () => {
                 </p>
 
                 <div className="flex justify-end flex-wrap gap-2 md:gap-4 md:mt-7 mt-2 lg:mt-10">
-                  <Link href="/products">
-                   <SliceButton  className="cursor-pointer">
-        Shop Now
-      </SliceButton>
-                  </Link>
+                <SliceButton
+  href="/products"
+  className="cursor-pointer"
+>
+  Shop Now
+</SliceButton>
 
                   {/* <Link href="/collections">
                     <button className="border border-white text-white hover:bg-white hover:text-black px-3 py-1.5 sm:px-5 sm:py-2.5 lg:px-8 lg:py-4 rounded-full text-[10px] sm:text-sm lg:text-base font-semibold transition-all duration-300">

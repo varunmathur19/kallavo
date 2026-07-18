@@ -53,7 +53,7 @@ export default function ProductCard() {
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#f7f4ef] p-8 w-full">
+    <div ref={containerRef} className=" bg-[#f7f4ef] p-8 w-full">
       {/* Heading */}
       <div className="text-center pt-[0px] md:pt-[40px]">
         <h2 className="text-4xl md:text-5xl font-bold text-[#af89bc]">
