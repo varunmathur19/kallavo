@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Satisfy } from "next/font/google";
+import Image from "next/image";
 
 const satisfy = Satisfy({
   subsets: ["latin"],
@@ -13,16 +14,19 @@ export default function Header() {
 
   return (
     <header className=" w-full bg-white border-b border-gray-100 z-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto lg:px-8 px-4">
         <div className="relative flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/">
-            <h1
-              className={`${satisfy.className} text-4xl text-[#af89bc] leading-none`}
-            >
-              Kallavo
-            </h1>
-          </a>
+          {/* Logo */}
+<a href="/" className="flex items-center">
+  <Image
+    src="/home/kallavo-logo-1.png"
+    alt="Kallavo"
+    width={70}
+    height={50}
+    className="object-contain"
+  />
+</a>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-12">

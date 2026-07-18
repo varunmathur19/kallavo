@@ -2,6 +2,7 @@ import Image from "next/image";
 import Header from "../component/home/Header";
 import Hero from "../component/home/Hero";
 import Banner from "../component/home/Banner";
+import Product  from "../component/home/Product";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Banner/>
+      <Product/>
     </>
   );
 }
