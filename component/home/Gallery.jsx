@@ -18,7 +18,7 @@ export default function Gallery() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-16 md:px-8 px-4 ">
       <div className="mx-auto max-w-6xl grid grid-cols-4 gap-2">
 
         {/* Main Image */}
