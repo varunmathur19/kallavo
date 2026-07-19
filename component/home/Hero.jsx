@@ -25,7 +25,7 @@ export default function Hero() {
             key={index}
             className="flex-shrink-0 flex flex-col items-center mx-6 cursor-pointer group"
           >
-            <div className="relative w-18 h-18 md:w-24 md:h-24 rounded-full overflow-hidden border border-[#d8c7ae] shadow-sm transition duration-300 group-hover:scale-105">
+            <div className="relative w-15 h-15 md:w-24 md:h-24 rounded-full overflow-hidden border border-[#d8c7ae] shadow-sm transition duration-300 group-hover:scale-105">
               <Image
                 src={item.image}
                 alt={item.name}
@@ -34,7 +34,7 @@ export default function Hero() {
               />
             </div>
 
-            <h3 className="mt-3 text-[15px] font-medium text-[#222] whitespace-nowrap">
+            <h3 className="md:mt-3 mt-0 md:text-[15px] text-[13px] font-medium text-[#222] whitespace-nowrap">
               {item.name}
             </h3>
           </div>

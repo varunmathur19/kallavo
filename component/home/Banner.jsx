@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Satisfy } from "next/font/google";
 import SliceButton from "../common/Shopbutton";
 
@@ -11,99 +10,112 @@ const satisfy = Satisfy({
 const Banner = () => {
   return (
     <>
-      {/* Mobile Heading (Only Mobile) */}
-      <div className="block md:hidden px-4 py-5 text-center bg-white">
-        <h1
-          className={`${satisfy.className} text-2xl text-black leading-tight`}
-        >
+      {/* ==================== MOBILE TOP CONTENT ==================== */}
+      <div className="block md:hidden bg-white px-4 py-6 text-center border-b">
+        <h1 className={`${satisfy.className} text-2xl text-black leading-tight`}>
           Elevate Your Timeless Décor
           <br />
-          Home With{" "}
-          <span className="text-[#af89bc]">Kallavo</span>
+          Home With <span className="text-[#af89bc]">Kallavo</span>
         </h1>
+
+        <p className="mt-5 text-gray-600 text-[15px] leading-relaxed px-2 max-w-md mx-auto">
+          Discover handcrafted décor, elegant furniture, premium lighting, 
+          kitchen essentials and artistic collections designed to transform 
+          every corner of your home.
+        </p>
+
+        <div className="mt-6">
+          <SliceButton href="/products" className="cursor-pointer">
+            Shop Now
+          </SliceButton>
+        </div>
       </div>
 
-      <section className="relative w-full h-[200px] md:h-[400px] lg:h-[500px] xl:h-[650px] overflow-hidden max-w-[1500px] mx-auto">
-        {/* Background Image */}
+      {/* ==================== BANNER IMAGE SECTION ==================== */}
+      <section className="relative w-full h-[480px] md:h-[520px] lg:h-[550px] xl:h-[650px] overflow-hidden max-w-[1500px] mx-auto">
+        
+        {/* Mobile Background Image */}
+        <Image
+          src="/home/banner-mobile-image.jpg"
+          alt="Banner Mobile"
+          fill
+          priority
+          className="object-cover object-center block md:hidden"
+        />
+
+        {/* Desktop Background Image */}
         <Image
           src="/home/slider-image.avif"
           alt="Banner"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-center hidden md:block"
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/30 to-black/70" />
+        <div className="absolute hidden md:block inset-0 bg-gradient-to-r from-black/10 via-black/30 to-black/60" />
 
-        {/* Content */}
-        <div className="absolute inset-0 z-10 flex items-center">
-          <div className="max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-12">
+        {/* Desktop + Tablet Content */}
+        <div className="absolute inset-0 z-10 flex items-center hidden md:flex">
+          <div className="max-w-7xl mx-auto w-full px-6 lg:px-12">
             <div className="flex justify-end">
               <div className="max-w-xl text-right">
-
-                {/* Desktop / Tablet Heading */}
-                <h1
-                  className={`${satisfy.className} hidden md:block text-[24px] lg:text-[26px] xl:text-[35px] text-white leading-tight`}
-                >
+                
+                <h1 className={`${satisfy.className} text-[28px] lg:text-[35px] text-white leading-tight`}>
                   Elevate Your Timeless Décor
                   <br />
                   Home With{" "}
-                  <span className="inline md:inline xl:block text-[#af89bc]">
-                    Kallavo
-                  </span>
+                  <span className="text-[#af89bc]">Kallavo</span>
                 </h1>
 
-                <p className="md:mt-5 mt-2 lg:mt-6 text-[10px] sm:text-sm md:text-base lg:text-lg text-white/85 leading-4 sm:leading-6 lg:leading-8 max-w-[220px] sm:max-w-[320px] md:max-w-[450px] lg:max-w-full ml-auto">
-                  Discover handcrafted décor, elegant furniture, premium
-                  lighting, kitchen essentials and artistic collections
-                  designed to transform every corner of your home.
+                <p className="mt-6 text-lg text-white/90 leading-relaxed max-w-md ml-auto">
+                  Discover handcrafted décor, elegant furniture, premium lighting, 
+                  kitchen essentials and artistic collections designed to transform 
+                  every corner of your home.
                 </p>
 
-                <div className="flex justify-end flex-wrap gap-2 md:gap-4 md:mt-7 mt-2 lg:mt-10">
-                <SliceButton
-  href="/products"
-  className="cursor-pointer"
->
-  Shop Now
-</SliceButton>
-
-                  {/* <Link href="/collections">
-                    <button className="border border-white text-white hover:bg-white hover:text-black px-3 py-1.5 sm:px-5 sm:py-2.5 lg:px-8 lg:py-4 rounded-full text-[10px] sm:text-sm lg:text-base font-semibold transition-all duration-300">
-                      Explore Collection
-                    </button>
-                  </Link> */}
+                <div className="flex justify-end mt-8">
+                  <SliceButton href="/products" className="cursor-pointer">
+                    Shop Now
+                  </SliceButton>
                 </div>
 
-                <div className="flex justify-end items-center gap-4 sm:gap-6 lg:gap-10 md:mt-7 mt-2 lg:mt-12 text-white">
-                  <div>
-                    <h3 className="text-base sm:text-xl lg:text-3xl font-bold">
-                      10K+
-                    </h3>
-                    <p className="text-[8px] sm:text-xs text-white/70">
-                      Happy Customers
-                    </p>
+                {/* Counts - Now Below Shop Now Button on md, lg, xl */}
+                <div className="flex justify-center md:justify-end gap-8 lg:gap-12 mt-10 text-white">
+                  <div className="text-center md:text-right">
+                    <h3 className="text-3xl lg:text-4xl font-bold">10K+</h3>
+                    <p className="text-sm text-white/70">Happy Customers</p>
                   </div>
-
-                  <div>
-                    <h3 className="text-base sm:text-xl lg:text-3xl font-bold">
-                      500+
-                    </h3>
-                    <p className="text-[8px] sm:text-xs text-white/70">
-                      Premium Products
-                    </p>
+                  <div className="text-center md:text-right">
+                    <h3 className="text-3xl lg:text-4xl font-bold">500+</h3>
+                    <p className="text-sm text-white/70">Premium Products</p>
                   </div>
-
-                  <div>
-                    <h3 className="text-base sm:text-xl lg:text-3xl font-bold">
-                      4.9★
-                    </h3>
-                    <p className="text-[8px] sm:text-xs text-white/70">
-                      Customer Rating
-                    </p>
+                  <div className="text-center md:text-right">
+                    <h3 className="text-3xl lg:text-4xl font-bold">4.9★</h3>
+                    <p className="text-sm text-white/70">Customer Rating</p>
                   </div>
                 </div>
 
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Stats (Bottom of Image) */}
+        <div className="block md:hidden absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/90 via-black/60 to-transparent pt-16 pb-8">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="flex justify-between items-center text-white text-center">
+              <div className="flex-1">
+                <h3 className="text-3xl font-bold">10K+</h3>
+                <p className="text-xs mt-1 text-white/80">Happy Customers</p>
+              </div>
+              <div className="flex-1 border-l border-r border-white/30">
+                <h3 className="text-3xl font-bold">500+</h3>
+                <p className="text-xs mt-1 text-white/80">Premium Products</p>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-3xl font-bold">4.9★</h3>
+                <p className="text-xs mt-1 text-white/80">Customer Rating</p>
               </div>
             </div>
           </div>
