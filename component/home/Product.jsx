@@ -55,7 +55,7 @@ export default function ProductCard() {
   return (
     <div ref={containerRef} className=" bg-[#f7f4ef] md:p-8 px-4 w-full">
       {/* Heading */}
-      <div className="text-center pt-[0px] md:pt-[40px]">
+      <div className="text-center pt-[35px] md:pt-[40px]">
         <h2 className="text-4xl md:text-5xl font-bold text-[#af89bc]">
           Trending Items
         </h2>
