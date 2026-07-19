@@ -88,7 +88,9 @@ export default function Testimonial() {
   }, [paused, next]);
 
   return (
-    <section className="relative overflow-hidden py-[35px] md:py-[50px]" style={{ backgroundColor: "#FBF6F0" }}>
+    <section className="relative overflow-hidden py-[35px] md:py-[50px]"
+    //  style={{ backgroundColor: "#FBF6F0" }}
+     >
       <div className="relative max-w-6xl mx-auto px-4">
         <div className="text-center mb-5">
           <h2 className="font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#2E2621" }}>
