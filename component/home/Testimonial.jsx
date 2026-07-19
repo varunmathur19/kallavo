@@ -2,19 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
-/**
- * Design notes (Kallavo):
- * - No stock photos. Each review is tagged with the swatch colour of the
- *   garment the customer bought — the picker below the card doubles as a
- *   tiny "fabric swatch" rail instead of generic dots.
- * - Cards sit like garments on a rack: the active review is centred and in
- *   focus, the neighbours peek in from either side, softened and scaled
- *   down, and slide over on autoplay/click.
- * - Fonts: swap the classes below for your actual next/font vars if you've
- *   set up Playfair Display (display) + Inter or Poppins (body). Falls back
- *   to font-serif / font-sans until then.
- */
-
 const testimonials = [
   {
     name: "Ritika Sharma",
@@ -62,12 +49,7 @@ function Sparkles({ count }) {
   return (
     <div className="flex gap-0.5" aria-hidden="true">
       {Array.from({ length: 5 }).map((_, i) => (
-        <span
-          key={i}
-          className={`text-sm leading-none ${
-            i < count ? "text-[#C8973E]" : "text-[#e6dccb]"
-          }`}
-        >
+        <span key={i} className={`text-sm leading-none ${i < count ? "text-[#C8973E]" : "text-[#e6dccb]"}`}>
           ✦
         </span>
       ))}
@@ -77,15 +59,11 @@ function Sparkles({ count }) {
 
 function PaisleyMark() {
   return (
-    <svg
-      viewBox="0 0 48 48"
-      className="w-9 h-9 shrink-0"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 48 48" className="w-9 h-9 shrink-0" aria-hidden="true">
       <path
         d="M24 6c9 0 14 7 14 15 0 6-4 9-9 9-4 0-6-2-6-5 0-2 1.5-3.5 3.5-3.5S30 23 30 21c0-4-3-7-8-7-6 0-10 5-10 12 0 8 6 14 14 14"
         fill="none"
-        stroke="#C8973E"
+        stroke="#af89bc"
         strokeWidth="1.6"
         strokeLinecap="round"
       />
@@ -99,10 +77,7 @@ export default function Testimonial() {
   const total = testimonials.length;
   const timerRef = useRef(null);
 
-  const go = useCallback(
-    (i) => setCurrent(((i % total) + total) % total),
-    [total]
-  );
+  const go = useCallback((i) => setCurrent(((i % total) + total) % total), [total]);
   const next = useCallback(() => go(current + 1), [current, go]);
   const prev = useCallback(() => go(current - 1), [current, go]);
 
@@ -113,38 +88,15 @@ export default function Testimonial() {
   }, [paused, next]);
 
   return (
-    <section
-      className="relative overflow-hidden py-[35px] md:py-[50px]"
-      style={{ backgroundColor: "#FBF6F0" }}
-    >
-      {/* ambient thread lines */}
-      {/* <svg
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.08]"
-        aria-hidden="true"
-      >
-        <line x1="0" y1="20%" x2="100%" y2="15%" stroke="#7A1F3D" strokeWidth="1" />
-        <line x1="0" y1="85%" x2="100%" y2="90%" stroke="#C8973E" strokeWidth="1" />
-      </svg> */}
-
+    <section className="relative overflow-hidden py-[35px] md:py-[50px]" style={{ backgroundColor: "#FBF6F0" }}>
       <div className="relative max-w-6xl mx-auto px-4">
-        {/* Heading */}
         <div className="text-center mb-5">
-        
-          <h2
-            className="font-serif text-4xl md:text-5xl leading-tight"
-            style={{ color: "#2E2621" }}
-          >
-           Testinomials 
-        
+          <h2 className="font-serif text-4xl md:text-5xl leading-tight" style={{ color: "#2E2621" }}>
+            Testimonials
           </h2>
         </div>
 
-        {/* Rack / carousel */}
-        <div
-          className="relative"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
+        <div className="relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
           <div className="relative h-[420px] sm:h-[380px] md:h-[360px] flex items-center justify-center">
             {testimonials.map((t, i) => {
               let offset = i - current;
@@ -155,9 +107,7 @@ export default function Testimonial() {
               const abs = Math.abs(offset);
 
               const style = {
-                transform: `translateX(${offset * 62}%) scale(${
-                  isActive ? 1 : 0.82
-                })`,
+                transform: `translateX(${offset * 62}%) scale(${isActive ? 1 : 0.82})`,
                 opacity: abs > 1 ? 0 : isActive ? 1 : 0.45,
                 filter: isActive ? "blur(0px)" : "blur(1.5px)",
                 zIndex: 10 - abs,
@@ -167,7 +117,6 @@ export default function Testimonial() {
               return (
                 <article
                   key={t.name}
-                  aria-hidden={!isActive}
                   style={style}
                   className="motion-reduce:transition-none absolute w-[88%] sm:w-[70%] md:w-[52%] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 >
@@ -175,35 +124,15 @@ export default function Testimonial() {
                     className="relative rounded-[28px] bg-white px-7 py-9 md:px-10 md:py-11 shadow-[0_20px_45px_-15px_rgba(122,31,61,0.18)]"
                     style={{ borderTop: `5px solid ${t.swatch}` }}
                   >
-                    {/* hanging tag */}
-                    <div className="absolute -top-5 right-8 flex flex-col items-center">
-                      <span
-                        className="h-4 w-px"
-                        style={{ backgroundColor: "#c9b9a3" }}
-                      />
-                      <span
-                        className="mt-5 rounded-full border px-3 py-1 text-[10px] font-semibold tracking-wide uppercase bg-white"
-                        style={{ borderColor: t.swatch, color: t.swatch }}
-                      >
-                        {t.garment}
-                      </span>
-                    </div>
-
                     <PaisleyMark />
 
-                    <p
-                      className="mt-4 text-[16px] md:text-[17px] leading-relaxed"
-                      style={{ color: "#3d3329" }}
-                    >
+                    <p className="mt-4 text-[16px] md:text-[17px] leading-relaxed" style={{ color: "#3d3329" }}>
                       {t.text}
                     </p>
 
                     <div className="mt-7 flex items-center justify-between">
                       <div>
-                        <p
-                          className="font-serif text-lg"
-                          style={{ color: "#2E2621" }}
-                        >
+                        <p className="font-serif text-lg" style={{ color: "#2E2621" }}>
                           {t.name}
                         </p>
                         <p className="text-xs tracking-wide text-[#8A7A6E]">
@@ -218,37 +147,28 @@ export default function Testimonial() {
             })}
           </div>
 
-          {/* Arrows */}
-          <button
-            onClick={prev}
-            aria-label="Previous testimonial"
-            className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7A1F3D]"
-          >
-            <span className="text-[#7A1F3D]">←</span>
+          <button onClick={prev} className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:scale-105 transition">
+            <i class="ri-arrow-left-s-line"></i>
           </button>
-          <button
-            onClick={next}
-            aria-label="Next testimonial"
-            className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7A1F3D]"
-          >
-            <span className="text-[#7A1F3D]">→</span>
+          <button onClick={next} className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:scale-105 transition">
+            <i class="ri-arrow-right-s-line"></i>
           </button>
         </div>
 
-        {/* Swatch rail */}
-        <div className="mt-12 flex items-center justify-center gap-3">
+        {/* Swatch Rail - Andar wala Active Red/Bright */}
+        <div className="mt-12 flex items-center justify-center gap-4">
           {testimonials.map((t, i) => (
             <button
               key={t.name}
               onClick={() => go(i)}
-              aria-label={`Show review from ${t.name}`}
-              aria-current={i === current}
-              className="group relative h-3.5 w-3.5 rounded-full transition-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7A1F3D]"
+              className={`group relative h-4 w-4 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#af89bc] ${
+                i === current ? "scale-125 ring-4 ring-[#af89bc]/30" : "hover:scale-110"
+              }`}
               style={{
-                backgroundColor: t.swatch,
-                transform: i === current ? "scale(1.35)" : "scale(1)",
-                boxShadow:
-                  i === current ? `0 0 0 3px #FBF6F0, 0 0 0 4.5px ${t.swatch}` : "none",
+                backgroundColor: i === current ? "#af89bc" : t.swatch,   // Active button bright brand color
+                boxShadow: i === current 
+                  ? "0 0 0 5px #FBF6F0, 0 0 0 7px #af89bc" 
+                  : "0 0 0 2px #FBF6F0",
               }}
             />
           ))}
