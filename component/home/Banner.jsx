@@ -59,7 +59,7 @@ const Banner = () => {
       </div>
 
       {/* ==================== BANNER IMAGE SECTION ==================== */}
-      <section className="relative w-full h-[300px] md:h-[520px] lg:h-[550px] xl:h-[650px] overflow-hidden max-w-[1500px] mx-auto">
+      <section className="relative w-full h-[380px] md:h-[520px] lg:h-[550px] xl:h-[650px] overflow-hidden max-w-[1500px] mx-auto">
 
         {/* Mobile Background Image */}
         <Image
