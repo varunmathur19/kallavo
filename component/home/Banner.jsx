@@ -48,7 +48,7 @@ const Banner = () => {
   return (
     <>
       {/* ==================== MOBILE TOP CONTENT ==================== */}
-      <div className="block md:hidden bg-white px-4 py-3 text-center border-b">
+      <div className="block md:hidden bg-white px-4 py-5 text-center border-b">
         <h1
           className={`${satisfy.className} text-[20px] text-black leading-tight`}
         >
@@ -59,7 +59,7 @@ const Banner = () => {
       </div>
 
       {/* ==================== BANNER IMAGE SECTION ==================== */}
-      <section className="relative w-full h-[380px] md:h-[520px] lg:h-[550px] xl:h-[650px] overflow-hidden max-w-[1500px] mx-auto">
+      <section className="relative w-full h-[420px] md:h-[520px] lg:h-[550px] xl:h-[650px] overflow-hidden max-w-[1500px] mx-auto">
 
         {/* Mobile Background Image */}
         <Image
