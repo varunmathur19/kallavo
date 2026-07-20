@@ -8,16 +8,18 @@ const images = [
   "/home/banner-image-2.jpg",
 ];
 
-const marqueeText = "✦ Handcrafted Luxury • Timeless Elegance • Premium Home Decor • Free Shipping on Orders Above ₹5000 • 30 Days Easy Return ✦";
+const marqueeText =
+  "✦ Handcrafted Luxury • Timeless Elegance • Premium Home Decor • Free Shipping on Orders Above ₹5000 • 30 Days Easy Return ✦";
 
 export default function BannerImage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [nextIndex, setNextIndex] = useState(null);
+ const [nextIndex, setNextIndex] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (isAnimating) return;
+
       const next = (currentIndex + 1) % images.length;
       setNextIndex(next);
       setIsAnimating(true);
@@ -35,8 +37,21 @@ export default function BannerImage() {
   };
 
   return (
-    <section className="w-full overflow-hidden max-w-[1500px] mx-auto relative">
-      <div className="relative lg:h-[400px] md:h-[300px] xl:h-[500px] h-[220px] w-full overflow-hidden">
+    <section className="w-full max-w-[1500px] mx-auto overflow-hidden">
+
+      {/* ===================== MARQUEE (IMAGE KE UPAR) ===================== */}
+  <div className="bg-gradient-to-r from-[#7d5a8c] via-[#af89bc] to-[#d4b8dd] backdrop-blur-md border-b border-white/20 shadow-[0_4px_20px_rgba(175,137,188,0.35)] text-white py-3 overflow-hidden">
+        <div className="marquee-container">
+          <div className="marquee-track">
+            <span>{marqueeText}</span>
+            <span>{marqueeText}</span>
+            <span>{marqueeText}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* ===================== BANNER ===================== */}
+      <div className="relative w-full lg:h-[400px] md:h-[300px] xl:h-[500px] h-[220px] overflow-hidden">
 
         {/* Current Image */}
         <div className="absolute inset-0">
@@ -49,7 +64,7 @@ export default function BannerImage() {
           />
         </div>
 
-        {/* Next Image with Animation */}
+        {/* Next Image */}
         {nextIndex !== null && (
           <div
             className="absolute inset-0 banner-slide-reveal"
@@ -64,68 +79,91 @@ export default function BannerImage() {
           </div>
         )}
 
-        {/* ==================== GLASS MARQUEE ==================== */}
-        <div className="absolute top-0 left-0 right-0 z-30 bg-white/10 backdrop-blur-xl border-b border-white/20 py-2.5 overflow-hidden shadow-sm">
-          <div className="marquee-container">
-            <div className="marquee-text text-white text-sm font-medium tracking-[1.5px] whitespace-nowrap">
-              {marqueeText}
-              <span className="mx-8">{marqueeText}</span>
-            </div>
-          </div>
-        </div>
-
         {/* Dots */}
-        <div className="absolute bottom-6 left-1/2 z-40 flex -translate-x-1/2 gap-3">
+        <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-3">
           {images.map((_, index) => (
             <button
               key={index}
               onClick={() => {
                 if (isAnimating || index === currentIndex) return;
+
                 setNextIndex(index);
                 setIsAnimating(true);
               }}
-              className={`h-2 w-2 rounded-full transition-all ${
-                currentIndex === index ? "w-8 bg-white" : "bg-white/60"
+              className={`h-2 rounded-full transition-all duration-300 ${
+                currentIndex === index
+                  ? "w-8 bg-white"
+                  : "w-2 bg-white/60 hover:bg-white"
               }`}
             />
           ))}
         </div>
       </div>
 
-      {/* Animation Styles */}
+      {/* ===================== STYLES ===================== */}
       <style jsx global>{`
+        /* Banner Animation */
         @keyframes banner-clip-reveal {
-          from { clip-path: inset(0% 0% 0% 100%); }
-          to { clip-path: inset(0% 0% 0% 0%); }
+          from {
+            clip-path: inset(0 0 0 100%);
+          }
+          to {
+            clip-path: inset(0 0 0 0);
+          }
         }
 
         @keyframes banner-img-zoom {
-          from { transform: scale(1.15); }
-          to { transform: scale(1); }
+          from {
+            transform: scale(1.15);
+          }
+          to {
+            transform: scale(1);
+          }
         }
 
         .banner-slide-reveal {
-          animation: banner-clip-reveal 1.2s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+          animation: banner-clip-reveal 1.2s
+            cubic-bezier(0.76, 0, 0.24, 1) forwards;
         }
 
         .banner-img-zoom {
-          animation: banner-img-zoom 1.3s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+          animation: banner-img-zoom 1.3s
+            cubic-bezier(0.76, 0, 0.24, 1) forwards;
         }
 
         /* Marquee */
         .marquee-container {
-          overflow: hidden;
           width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
         }
 
-        .marquee-text {
-          display: inline-block;
-          animation: marquee 28s linear infinite;
+        .marquee-track {
+          display: inline-flex;
+          animation: marquee 25s linear infinite;
+        }
+
+        .marquee-track span {
+          padding-right: 80px;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 2px;
+          color: #fff;
+        }
+
+        @media (min-width: 768px) {
+          .marquee-track span {
+            font-size: 15px;
+          }
         }
 
         @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-33.333%);
+          }
         }
       `}</style>
     </section>

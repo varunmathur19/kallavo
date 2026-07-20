@@ -9,10 +9,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { name: "Luxury Ceramic Vase", category: "Home Decor", price: "₹3,999", oldPrice: "₹5,999", image: "/home/product-1.png" },
-  { name: "Elegant Temple Jar", category: "Premium Collection", price: "₹4,499", oldPrice: "₹6,999", image: "/home/product-1.png" },
-  { name: "Modern Wall Plate", category: "Wall Decoration", price: "₹2,999", oldPrice: "₹4,999", image: "/home/product-1.png" },
-  { name: "Designer Table Decor", category: "Table Accessories", price: "₹3,499", oldPrice: "₹5,499", image: "/home/product-1.png" },
+  { name: "Luxury Ceramic Vase", category: "Home Decor", price: "₹3,999",  image: "/home/product-1.png" },
+  { name: "Elegant Temple Jar", category: "Premium Collection", price: "₹4,499", image: "/home/product-1.png" },
+  { name: "Modern Wall Plate", category: "Wall Decoration", price: "₹2,999",  image: "/home/product-1.png" },
+  { name: "Designer Table Decor", category: "Table Accessories", price: "₹3,499",image: "/home/product-1.png" },
 ];
 
 const tabs = [
@@ -110,29 +110,39 @@ export default function ProductCard() {
                 src={product.image}
                 alt={product.name}
                 fill
-                className="object-cover p-5 transition-transform duration-700 hover:scale-105"
+                className="object-cover md:p-5 p-2 rounded-[20px] md:rounded-[0px] transition-transform duration-700 hover:scale-105"
                 priority={index < 2}
               />
             </div>
 
             {/* Card Content */}
-            <div className="space-y-4 px-5 pb-5">
-              <span className="text-sm font-medium text-[#af89bc]">
-                {product.category}
-              </span>
+            <div className="space-y-3 px-5 pb-5">
+              
+            <div className="block md:block">
+  {/* Mobile */}
+  <div className="flex items-center justify-between gap-3 md:hidden">
+    <h2 className="text-[18px] font-bold text-[#af89bc] leading-tight">
+      {product.name}
+    </h2>
 
-              <h2 className="xl:text-[20px] lg:text-[18px] md:text-[18px] text-[18px] font-bold text-[#af89bc]">
-                {product.name}
-              </h2>
+    <span className="text-xl font-bold text-orange-500 whitespace-nowrap">
+      {product.price}
+    </span>
+  </div>
 
-              <div className="flex items-center gap-3">
-                <span className="text-3xl font-bold text-orange-500">
-                  {product.price}
-                </span>
-                <span className="text-lg text-gray-400 line-through">
-                  {product.oldPrice}
-                </span>
-              </div>
+  {/* Desktop / Tablet */}
+  <div className="hidden md:block">
+    <h2 className="xl:text-[20px] lg:text-[18px] md:text-[18px] text-[18px] font-bold text-[#af89bc]">
+      {product.name}
+    </h2>
+
+    <div className="flex items-center gap-3">
+      <span className="text-xl font-bold text-orange-500">
+        {product.price}
+      </span>
+    </div>
+  </div>
+</div>
 
               <SliceButton className="w-full cursor-pointer">
                 Add to Cart

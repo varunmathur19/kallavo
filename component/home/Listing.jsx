@@ -88,7 +88,7 @@ const products = [
 
 export default function Listing() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-[35px] md:py-[70px] bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
@@ -99,11 +99,11 @@ export default function Listing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6 gap-3">
           {products.map((product) => (
             <div
               key={product.id}
-              className=" cursor-pointer bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="cursor-pointer bg-white rounded-sm md:rounded-2xl overflow-hidden shadow-none md:shadow-md md:hover:shadow-xl transition-all duration-300 md:hover:-translate-y-1"
             >
               <div className="relative">
                 <Image
@@ -121,29 +121,34 @@ export default function Listing() {
                 )}
               </div>
 
-              <div className="p-5">
-                <h3 className="font-semibold text-lg text-gray-900 line-clamp-1">
+              <div className="md:p-5 p-2">
+                <h3 className="font-semibold text-center text-sm md:text-lg text-gray-900 ">
                   {product.title}
                 </h3>
-                <p className="text-gray-600 text-sm mt-1 line-clamp-1">
+                {/* <p className="text-gray-600 text-sm mt-1 line-clamp-1">
                   {product.desc}
-                </p>
+                </p> */}
 
                 <div className="mt-4 flex items-center justify-between">
-                  <span className="text-2xl font-bold text-[#af89bc]">
+                  {/* <span className="text-2xl font-bold text-[#af89bc]">
                     {product.price}
-                  </span>
+                  </span> */}
                   {/* <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
                     Add to Cart
                   </button> */}
-                <SliceButton className="cursor-pointer ">
+                {/* <SliceButton className="cursor-pointer ">
                   Add to Cart
-                </SliceButton>
+                </SliceButton> */}
                 </div>
               </div>
             </div>
           ))}
         </div>
+        <div className="flex justify-center mt-10">
+  <SliceButton href="/products" className="cursor-pointer">
+    View More
+  </SliceButton>
+</div>
       </div>
     </section>
   );
