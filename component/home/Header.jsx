@@ -109,6 +109,13 @@ export default function Header() {
               Collections
               <span className="absolute -bottom-3 left-0 w-0 h-[2px] bg-[#af89bc] transition-all duration-300 group-hover:w-full" />
             </a>
+
+            <a href="/Product" className="group relative text-sm font-semibold tracking-[2px] uppercase text-gray-500 hover:text-[#af89bc] transition-all">
+                New Arrivals
+              <span className="absolute -bottom-3 left-0 w-0 h-[2px] bg-[#af89bc] transition-all duration-300 group-hover:w-full" />
+            </a>
+
+          
             <a href="/contact" className="group relative text-sm font-semibold text-gray-500 uppercase hover:text-[#af89bc] transition-all">
               Contact
               <span className="absolute -bottom-3 left-0 w-0 h-[2px] bg-[#af89bc] transition-all duration-300 group-hover:w-full" />
@@ -144,8 +151,12 @@ export default function Header() {
             <a href="/about" onClick={closeMenu} className="text-gray-700 hover:text-[#af89bc] hover:translate-x-2 transition-all">
               About
             </a>
+            
             <a href="/collections" onClick={closeMenu} className="text-gray-700 hover:text-[#af89bc] hover:translate-x-2 transition-all">
               Collections
+            </a>
+<a href="/Product" onClick={closeMenu} className="text-gray-700 hover:text-[#af89bc] hover:translate-x-2 transition-all">
+              New Arrivals
             </a>
             <a href="/contact" onClick={closeMenu} className="text-gray-700 hover:text-[#af89bc] hover:translate-x-2 transition-all">
               Contact
