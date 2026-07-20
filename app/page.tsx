@@ -8,6 +8,7 @@ import Gallery from "../component/home/Gallery";
 import Footer from "../component/home/Footer";
 import Testimonial from "../component/home/Testimonial";
 import Listing from "../component/home/Listing";
+import Faq from "../component/home/Faq";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Gallery/>
       <Listing/>
       <Testimonial/>
+      <Faq/>
       <Footer/>
     </>
   );

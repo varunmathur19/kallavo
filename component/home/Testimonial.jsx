@@ -150,10 +150,10 @@ export default function Testimonial() {
           </div>
 
           <button onClick={prev} className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:scale-105 transition">
-            <i class="ri-arrow-left-s-line"></i>
+            <i className="ri-arrow-left-s-line"></i>
           </button>
           <button onClick={next} className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:scale-105 transition">
-            <i class="ri-arrow-right-s-line"></i>
+            <i className="ri-arrow-right-s-line"></i>
           </button>
         </div>
 
