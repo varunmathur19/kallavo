@@ -8,6 +8,7 @@ const lato = Lato({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
+
 const satisfy = Satisfy({
   subsets: ["latin"],
   weight: "400",
@@ -40,32 +41,29 @@ export default function Faq() {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className={`${lato.className} relative w-full bg-[#0f0d12] py-[35px] md:py-[70px] px-6 overflow-hidden`}>
+    <section className={`${lato.className} relative w-full bg-[#f8f7fa] py-[35px] md:py-[70px] px-6 overflow-hidden`}>
 
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full bg-[#af89bc]/20 blur-[120px]" />
+      {/* Soft accent glow */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full bg-[#af89bc]/10 blur-[120px]" />
 
       <div className="relative max-w-3xl mx-auto">
 
         <div className="text-center mb-14">
-
-       <span className={`${satisfy.className} text-xl tracking-[0.3em] uppercase text-[#af89bc]`}>
-  Kallavo
-</span>
-          <h2 className="mt-3 text-4xl md:text-5xl text-white font-bold">
+          <span className={`${satisfy.className} text-xl tracking-[0.3em] uppercase text-[#af89bc]`}>
+            Kallavo
+          </span>
+          <h2 className="mt-3 text-4xl md:text-5xl text-gray-900 font-bold">
             Frequently Asked Questions
           </h2>
 
-          <p className="mt-3 text-lg text-white/50">
+          <p className="mt-3 text-lg text-gray-600">
             Everything you need to know before you shop with us
           </p>
-
         </div>
-
 
         <div className="flex flex-col gap-3 cursor-pointer">
 
           {faqs.map((item, i) => {
-
             const isOpen = open === i;
 
             return (
@@ -73,39 +71,35 @@ export default function Faq() {
                 key={i}
                 className={`rounded-2xl border transition-colors duration-300 ${
                   isOpen
-                    ? "border-[#af89bc]/60 bg-[#af89bc]/[0.06]"
-                    : "border-white/10 bg-white/[0.02]"
+                    ? "border-[#af89bc]/40 bg-white shadow-sm"
+                    : "border-gray-200 bg-white"
                 }`}
               >
-
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
                 >
-
                   <span
                     className={`text-xl md:text-2xl font-medium transition-colors ${
-                      isOpen ? "text-white" : "text-white/80"
+                      isOpen ? "text-gray-900" : "text-gray-800"
                     }`}
                   >
                     {item.q}
                   </span>
 
-
                   <span
                     className={`shrink-0 flex items-center justify-center h-7 w-7 rounded-full border transition-all duration-300 ${
                       isOpen
                         ? "border-[#af89bc] bg-[#af89bc] rotate-45"
-                        : "border-white/20"
+                        : "border-gray-300"
                     }`}
                   >
-
                     <svg
                       width="12"
                       height="12"
                       viewBox="0 0 12 12"
                       fill="none"
-                      className={isOpen ? "text-[#0f0d12]" : "text-white/70"}
+                      className={isOpen ? "text-white" : "text-gray-500"}
                     >
                       <path
                         d="M6 1V11M1 6H11"
@@ -114,11 +108,8 @@ export default function Faq() {
                         strokeLinecap="round"
                       />
                     </svg>
-
                   </span>
-
                 </button>
-
 
                 <div
                   className="grid transition-all duration-300 ease-in-out"
@@ -126,26 +117,19 @@ export default function Faq() {
                     gridTemplateRows: isOpen ? "1fr" : "0fr",
                   }}
                 >
-
                   <div className="overflow-hidden">
-
-                    <p className="px-6 pb-5 text-lg leading-relaxed text-white/55">
+                    <p className="px-6 pb-5 text-[17px] leading-relaxed text-gray-600">
                       {item.a}
                     </p>
-
                   </div>
-
                 </div>
-
               </div>
             );
-
           })}
 
         </div>
 
       </div>
-
     </section>
   );
 }
