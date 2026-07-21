@@ -58,14 +58,14 @@ export default function Footer() {
               <div className="flex gap-3">
                 <FaWhatsapp className="text-xl mt-1" />
                 <div>
-                  <p>+91 9876543210</p>
-                  <p>+91 9876543211</p>
+                  <p>+91 9045553748</p>
+                  {/* <p>+91 9876543211</p> */}
                 </div>
               </div>
 
               <div className="flex gap-3">
                 <MdEmail className="text-xl mt-1" />
-                <p>info@kallavo.com</p>
+                <p>Kallavo555@gmail.com</p>
               </div>
 
               <div className="flex gap-3">
