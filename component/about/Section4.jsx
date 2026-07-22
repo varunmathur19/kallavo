@@ -232,7 +232,7 @@ export default function Section4() {
     activeIndex >= total ? 0 : activeIndex;
 
   return (
-    <section className="relative w-full bg-[#6f6a5e] py-[35px] md:py-[70px] font-lato overflow-hidden">
+    <section className="relative w-full bg-[#f8f7fa] py-[35px] md:py-[70px] font-lato overflow-hidden">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14">
         <h2 className="text-3xl md:text-4xl font-semibold text-[#af89bc] mb-8 md:mb-10 text-center md:text-left">
           Our Journey
