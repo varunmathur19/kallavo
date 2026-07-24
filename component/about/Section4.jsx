@@ -271,21 +271,21 @@ export default function Section4() {
                     aria-hidden={!isActive}
                   >
                     <div
-                      className={`flex flex-col md:flex-row bg-white overflow-hidden shadow-lg min-h-[520px] md:min-h-[480px] lg:min-h-0 lg:h-[400px] xl:h-[440px] transition-opacity duration-300 ${
+                      className={`flex flex-col md:flex-row bg-white overflow-hidden shadow-lg md:h-[460px] lg:min-h-0 lg:h-[400px] xl:h-[440px] transition-opacity duration-300 ${
                         isActive ? "opacity-100" : "opacity-40 md:opacity-45"
                       }`}
                     >
-                      <div className="relative w-full md:w-[42%] lg:w-[44%] h-[300px] sm:h-[340px] md:h-full md:min-h-[480px] lg:min-h-0 lg:h-full shrink-0">
+                      <div className="hidden lg:block relative lg:w-[44%] lg:h-full shrink-0">
                         <Image
                           src={STORY_IMAGE}
                           alt=""
                           fill
                           className="object-cover object-center"
-                          sizes="(max-width: 768px) 100vw, 44vw"
+                          sizes="44vw"
                         />
                       </div>
 
-                      <div className="relative w-full md:w-[58%] lg:w-[56%] bg-white px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-10 lg:py-8 xl:px-12 xl:py-10 flex flex-col justify-center text-left md:min-h-[480px] lg:min-h-0 lg:h-full overflow-y-auto max-h-[520px] md:max-h-none">
+                      <div className="relative w-full lg:w-[56%] bg-white px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-10 lg:py-8 xl:px-12 xl:py-10 flex flex-col justify-center text-left lg:h-full overflow-y-auto max-h-[520px] md:max-h-[460px] lg:max-h-none">
                         <h3 className="font-serif text-xl sm:text-2xl md:text-[1.65rem] lg:text-2xl xl:text-3xl text-gray-900 mb-4 md:mb-5 lg:mb-3 leading-snug">
                           {slide.title}
                         </h3>
@@ -307,22 +307,22 @@ export default function Section4() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-center gap-4 sm:gap-5 shrink-0 text-white z-10">
+          <div className="flex flex-row lg:flex-col items-center justify-center gap-4 sm:gap-5 shrink-0 text-white z-10 mt-4 lg:mt-0">
             <button
               type="button"
               onClick={goPrev}
-              className="text-xl sm:text-2xl md:text-3xl leading-none hover:opacity-80 transition-opacity px-1"
+              className="text-xl sm:text-2xl md:text-[20px] rounded-[5px] bg-[#af89bc] px-2 py-2 leading-none hover:opacity-80 transition-opacity px-1 cursor-pointer"
               aria-label="Previous slide"
             >
-              ←
+              <i class="ri-arrow-left-line "></i>
             </button>
             <button
               type="button"
               onClick={goNext}
-              className="text-xl sm:text-2xl md:text-3xl leading-none hover:opacity-80 transition-opacity px-1"
+              className="text-xl sm:text-2xl md:text-[20px] rounded-[5px] bg-[#af89bc] px-2 py-2 leading-none hover:opacity-80 transition-opacity px-1 cursor-pointer"
               aria-label="Next slide"
             >
-              →
+              <i class="ri-arrow-right-line"></i>
             </button>
           </div>
         </div>
