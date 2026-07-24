@@ -5,6 +5,7 @@ import { Satisfy } from "next/font/google";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { usePathname } from "next/navigation";
 
 const satisfy = Satisfy({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ export default function Header() {
   const linksRef = useRef(null);
   const tlRef = useRef(null);
   const isAnimatingRef = useRef(false);
+  const pathname = usePathname();
 
   // GSAP Setup
   useGSAP(() => {
@@ -96,31 +98,91 @@ export default function Header() {
           </a>
 
           {/* Desktop Menu */}
-          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-12">
-            <a href="/" className="relative text-sm font-semibold text-[#af89bc] uppercase transition-all">
-              Home
-              <span className="absolute -bottom-3 left-0 w-full h-[2px] rounded-full bg-[#af89bc]" />
-            </a>
-            <a href="/about" className="group relative text-sm font-semibold tracking-[2px] uppercase text-gray-500 hover:text-[#af89bc] transition-all">
-              About
-              <span className="absolute -bottom-3 left-0 w-0 h-[2px] bg-[#af89bc] transition-all duration-300 group-hover:w-full" />
-            </a>
-            <a href="/collections" className="group relative text-sm font-semibold tracking-[2px] uppercase text-gray-500 hover:text-[#af89bc] transition-all">
-              Collections
-              <span className="absolute -bottom-3 left-0 w-0 h-[2px] bg-[#af89bc] transition-all duration-300 group-hover:w-full" />
-            </a>
+        <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-12">
 
-            <a href="/Product" className="group relative text-sm font-semibold tracking-[2px] uppercase text-gray-500 hover:text-[#af89bc] transition-all">
-                New Arrivals
-              <span className="absolute -bottom-3 left-0 w-0 h-[2px] bg-[#af89bc] transition-all duration-300 group-hover:w-full" />
-            </a>
+  <a
+    href="/"
+    className={`group relative text-sm font-semibold uppercase transition-all ${
+      pathname === "/"
+        ? "text-[#af89bc]"
+        : "text-gray-500 hover:text-[#af89bc]"
+    }`}
+  >
+    Home
+    <span
+      className={`absolute -bottom-3 left-0 h-[2px] bg-[#af89bc] rounded-full transition-all duration-300 ${
+        pathname === "/" ? "w-full" : "w-0 group-hover:w-full"
+      }`}
+    />
+  </a>
 
-          
-            <a href="/contact" className="group relative text-sm font-semibold text-gray-500 uppercase hover:text-[#af89bc] transition-all">
-              Contact
-              <span className="absolute -bottom-3 left-0 w-0 h-[2px] bg-[#af89bc] transition-all duration-300 group-hover:w-full" />
-            </a>
-          </nav>
+  <a
+    href="/about"
+    className={`group relative text-sm font-semibold uppercase transition-all ${
+      pathname === "/about"
+        ? "text-[#af89bc]"
+        : "text-gray-500 hover:text-[#af89bc]"
+    }`}
+  >
+    About
+    <span
+      className={`absolute -bottom-3 left-0 h-[2px] bg-[#af89bc] rounded-full transition-all duration-300 ${
+        pathname === "/about" ? "w-full" : "w-0 group-hover:w-full"
+      }`}
+    />
+  </a>
+
+  <a
+    href="/product"
+    className={`group relative text-sm font-semibold uppercase transition-all ${
+      pathname === "/product"
+        ? "text-[#af89bc]"
+        : "text-gray-500 hover:text-[#af89bc]"
+    }`}
+  >
+    Collections
+    <span
+      className={`absolute -bottom-3 left-0 h-[2px] bg-[#af89bc] rounded-full transition-all duration-300 ${
+        pathname === "/product" ? "w-full" : "w-0 group-hover:w-full"
+      }`}
+    />
+  </a>
+
+  <a
+    href="/new-arrivals"
+    className={`group relative text-sm font-semibold uppercase transition-all ${
+      pathname === "/new-arrivals"
+        ? "text-[#af89bc]"
+        : "text-gray-500 hover:text-[#af89bc]"
+    }`}
+  >
+    New Arrivals
+    <span
+      className={`absolute -bottom-3 left-0 h-[2px] bg-[#af89bc] rounded-full transition-all duration-300 ${
+        pathname === "/new-arrivals"
+          ? "w-full"
+          : "w-0 group-hover:w-full"
+      }`}
+    />
+  </a>
+
+  <a
+    href="/contact"
+    className={`group relative text-sm font-semibold uppercase transition-all ${
+      pathname === "/contact"
+        ? "text-[#af89bc]"
+        : "text-gray-500 hover:text-[#af89bc]"
+    }`}
+  >
+    Contact
+    <span
+      className={`absolute -bottom-3 left-0 h-[2px] bg-[#af89bc] rounded-full transition-all duration-300 ${
+        pathname === "/contact" ? "w-full" : "w-0 group-hover:w-full"
+      }`}
+    />
+  </a>
+
+</nav>
 
           {/* Hamburger */}
           <button

@@ -25,7 +25,7 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-3 text-white/80">
-              <li><Link href="#">Contact Us</Link></li>
+              <li><Link href="/contact">Contact Us</Link></li>
               {/* <li><Link href="#">Returns & Refunds</Link></li>
               <li><Link href="#">Shipping</Link></li>
               <li><Link href="#">Privacy Policy</Link></li>
@@ -40,8 +40,8 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-3 text-white/80">
-              <li><Link href="#">About Us</Link></li>
-              <li><Link href="#">Products</Link></li>
+              <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/product">Products</Link></li>
               {/* <li><Link href="#">Gift Cards</Link></li> */}
               {/* <li><Link href="#">Blogs</Link></li> */}
               {/* <li><Link href="#">Stores</Link></li> */}
