@@ -269,9 +269,12 @@ export default function ContactSection() {
                     "Send Message"
                   )}
                 </button> */}
-                <SliceButton className="w-full px-4 py-5  ">
-                    Submit
-                </SliceButton>
+                <button
+  type="submit"
+  className="w-full cursor-pointer px-4 py-5 bg-[#af89bc] text-white font-semibold rounded-lg shadow-md hover:bg-[#9d76ad] transition-all duration-300"
+>
+  Submit
+</button>
               </div>
             </form>
           )}
