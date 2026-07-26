@@ -15,12 +15,14 @@ const products = [
     category: "Wall Decor",
     price: "₹1,499",
     image: "/home/product-1.png",
+    sizes: ["4 inch", "6 inch"]
   },
   {
     name: "Premium Wall Frame",
     category: "Wall Decor",
     price: "₹2,499",
     image: "/home/product-1.png",
+    sizes: ["6 inch", "8 inch"]
   },
 
   // Home & Festive Decor
@@ -29,12 +31,14 @@ const products = [
     category: "Home & Festive Decor",
     price: "₹999",
     image: "/home/product-3.png",
+    sizes: ["4 inch", "6 inch", "8 inch"]
   },
   {
     name: "Decorative Diya Stand",
     category: "Home & Festive Decor",
     price: "₹799",
     image: "/home/product-3.png",
+    sizes: ["4 inch", "6 inch"]
   },
 
   // Corporate Gifting
@@ -43,12 +47,14 @@ const products = [
     category: "Corporate Gifting",
     price: "₹1,999",
     image: "/home/product-1.png",
+    sizes: ["6 inch", "8 inch"]
   },
   {
     name: "Premium Office Hamper",
     category: "Corporate Gifting",
     price: "₹2,499",
     image: "/home/product-2.png",
+    sizes: ["4 inch", "6 inch", "8 inch"]
   },
 
   // Corporate Branding
@@ -57,6 +63,7 @@ const products = [
     category: "Corporate Branding",
     price: "₹3,999",
     image: "/home/product-4.png",
+    sizes: ["6 inch", "8 inch"]
   },
 
   // Customised Gift Items
@@ -65,6 +72,7 @@ const products = [
     category: "Customised Gift Items",
     price: "₹1,299",
     image: "/home/product-3.png",
+    sizes: ["4 inch", "6 inch"]
   },
 
   // Personalised Gift
@@ -73,6 +81,7 @@ const products = [
     category: "Personalised Gift",
     price: "₹599",
     image: "/home/product-2.png",
+    sizes: ["4 inch", "6 inch", "8 inch"]
   },
 
   // MDF Printed Cutout
@@ -81,6 +90,7 @@ const products = [
     category: "MDF Printed Cutout",
     price: "₹499",
     image: "/home/product-1.png",
+    sizes: ["4 inch", "6 inch"]
   },
 
   // Rangoli Design
@@ -89,6 +99,7 @@ const products = [
     category: "Rangoli Design",
     price: "₹899",
     image: "/home/product-1.png",
+    sizes: ["6 inch", "8 inch"]
   },
 
   // MDF Cutout
@@ -97,6 +108,7 @@ const products = [
     category: "MDF Cutout",
     price: "₹699",
     image: "/home/product-2.png",
+    sizes: ["4 inch", "6 inch", "8 inch"]
   },
 
   // Rakhi Base
@@ -105,6 +117,7 @@ const products = [
     category: "Rakhi Base",
     price: "₹299",
     image: "/home/product-3.png",
+    sizes: ["4 inch", "6 inch"]
   },
 
   // Acrylic Cutout
@@ -113,6 +126,7 @@ const products = [
     category: "Acrylic Cutout",
     price: "₹799",
     image: "/home/product-4.png",
+    sizes: ["6 inch", "8 inch"]
   },
 
   // UV & Insert Sheets
@@ -121,6 +135,7 @@ const products = [
     category: "UV & Insert Sheets",
     price: "₹599",
     image: "/home/product-1.png",
+    sizes: ["4 inch", "6 inch", "8 inch"]
   },
 
   // Name Plates
@@ -129,6 +144,7 @@ const products = [
     category: "Name Plates",
     price: "₹999",
     image: "/home/product-3.png",
+    sizes: ["6 inch", "8 inch"]
   },
 
   // Wall Hangings
@@ -137,6 +153,7 @@ const products = [
     category: "Wall Hangings",
     price: "₹1,499",
     image: "/home/product-1.png",
+    sizes: ["4 inch", "6 inch"]
   },
 
   // Premium Wall Decor
@@ -145,6 +162,7 @@ const products = [
     category: "Premium Wall Decor",
     price: "₹3,999",
     image: "/home/product-4.png",
+    sizes: ["4 inch", "6 inch", "8 inch"]
   },
 
   // LED Clip-On Frames
@@ -153,6 +171,7 @@ const products = [
     category: "LED Clip-On Frames",
     price: "₹2,499",
     image: "/home/product-3.png",
+    sizes: ["6 inch", "8 inch"]
   },
 
   // Hampers
@@ -161,6 +180,7 @@ const products = [
     category: "Hampers",
     price: "₹1,799",
     image: "/home/product-1.png",
+    sizes: ["4 inch", "6 inch"]
   },
 
   // Neon Sign Board
@@ -169,6 +189,7 @@ const products = [
     category: "Neon Sign Board",
     price: "₹4,999",
     image: "/home/product-1.png",
+    sizes: ["4 inch", "6 inch", "8 inch"]
   },
 ];
 
@@ -325,7 +346,7 @@ const totalPages =
             <div className="space-y-3 px-5 pb-5">
               
             <div className="block md:block">
-  {/* Mobile */}
+  {/* Mobile
   <div className="flex items-center justify-between gap-3 md:hidden">
     <h2 className="text-[18px] font-bold text-[#af89bc] leading-tight">
       {product.name}
@@ -334,19 +355,37 @@ const totalPages =
     <span className="text-xl font-bold text-orange-500 whitespace-nowrap">
       {product.price}
     </span>
-  </div>
+  </div> */}
 
   {/* Desktop / Tablet */}
-  <div className="hidden md:block">
-    <h2 className="xl:text-[20px] lg:text-[18px] md:text-[18px] text-[18px] font-bold text-[#af89bc]">
+  <div className="">
+    <h2 className="xl:text-[20px] lg:text-[18px] md:text-[18px] line-clamp-1 xl:line-clamp-none text-[18px] font-bold text-[#af89bc]">
       {product.name}
     </h2>
 
-    <div className="flex items-center gap-3">
-      <span className="text-xl font-bold text-orange-500">
-        {product.price}
+   {/* Price */}
+<div className="flex items-center gap-3">
+  <span className="text-xl font-bold text-orange-500">
+    {product.price}
+  </span>
+</div>
+
+
+{/* Sizes */}
+{product.sizes && (
+  <div className="flex flex-wrap gap-2 mt-2">
+    {product.sizes.map((size, i) => (
+      <span
+        key={i}
+        className="xl:px-3 lg:px-2 px-2 py-1 text-xs rounded-full 
+        bg-[#af89bc]/10 text-[#af89bc] 
+        border border-[#af89bc]"
+      >
+        {size}
       </span>
-    </div>
+    ))}
+  </div>
+)}
   </div>
 </div>
 

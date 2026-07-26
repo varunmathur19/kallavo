@@ -3,14 +3,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import SliceButton from "../common/Shopbutton";
+import { contactApi } from "../../app/api/contact";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
     subject: "",
     message: ""
-  });
+});
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +23,7 @@ export default function ContactSection() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.fullName.trim())   newErrors.name = "Name is required";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
@@ -33,33 +34,30 @@ export default function ContactSection() {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
   const onSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  e.preventDefault();
 
-    setIsSubmitting(true);
-    setError(null);
+  if (!validate()) return;
+  setIsSubmitting(true);
+  setError(null);
+  try {
+    await contactApi(formData);
+    setIsSubmitted(true);
+   setFormData({
+ fullName:"",
+ email:"",
+ subject:"",
+ message:""
+});
+  } catch(err){
+    setError(
+      err.message || "Something went wrong"
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send message. Please try again later.");
-      }
-
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (err) {
-      setError(err.message || "Something went wrong.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+};
 
   const socialLinks = [
     {
@@ -200,8 +198,8 @@ export default function ContactSection() {
                   <input
                     type="text"
                     id="name"
-                    name="name"
-                    value={formData.name}
+                    name="fullName"
+                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder="Your name"
                     className={`w-full px-6 py-4 rounded-2xl border ${errors.name ? "border-red-400" : "border-[#af89bc]"} bg-white focus:outline-none focus:ring-2 focus:ring-[#af89bc] focus:border-[#af89bc] mt-1 transition-all`}
