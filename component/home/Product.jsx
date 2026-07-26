@@ -196,13 +196,45 @@ const tabs = [
 
 export default function ProductCard() {
   const [activeTab, setActiveTab] = useState("All");
+const [currentPage, setCurrentPage] = useState(1);
+
+  // const [activeTab, setActiveTab] = useState("All");
   const cardRef = useRef([]);
   const containerRef = useRef(null);
+  const PRODUCTS_PER_PAGE = 8;
+
+// const [activeTab, setActiveTab] = useState("All");
+// const [currentPage, setCurrentPage] = useState(1);
+
+// const cardRef = useRef([]);
+// const containerRef = useRef(null);
+
+const filteredProducts =
+  activeTab === "All"
+    ? products
+    : products.filter((product) => product.category === activeTab);
+
+useEffect(() => {
+  setCurrentPage(1);
+}, [activeTab]);
+
+const currentProducts =
+  activeTab === "All"
+    ? filteredProducts.slice(
+        (currentPage - 1) * PRODUCTS_PER_PAGE,
+        currentPage * PRODUCTS_PER_PAGE
+      )
+    : filteredProducts;
+
+const totalPages =
+  activeTab === "All"
+    ? Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
+    : 1;
 
   // Filter products based on active tab
-  const filteredProducts = activeTab === "All" 
-    ? products 
-    : products.filter(product => product.category === activeTab);
+  // const filteredProducts = activeTab === "All" 
+  //   ? products 
+  //   : products.filter(product => product.category === activeTab);
 
   useEffect(() => {
     const cards = cardRef.current.filter(Boolean);
@@ -247,7 +279,10 @@ export default function ProductCard() {
           {tabs.map((tab) => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+            onClick={() => {
+  setActiveTab(tab);
+  setCurrentPage(1);
+}}
               className={`px-5 cursor-pointer py-2.5 rounded-full text-sm font-medium transition-all duration-300
                 ${activeTab === tab 
                   ? "bg-[#af89bc] text-white shadow-md" 
@@ -262,7 +297,7 @@ export default function ProductCard() {
 
       {/* Product Cards Container */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full pb-[35px] md:pb-[40px] max-w-7xl mx-auto mt-8">
-        {filteredProducts.map((product, index) => (
+       {currentProducts.map((product, index) => (
           <div
             key={index}
             ref={(el) => {
@@ -322,6 +357,39 @@ export default function ProductCard() {
           </div>
         ))}
       </div>
+     {totalPages > 1 && (
+  <div className="flex justify-center gap-2 md:mt-6 mt-2 pb-10">
+    <button
+      disabled={currentPage === 1}
+      onClick={() => setCurrentPage((prev) => prev - 1)}
+      className="px-4 py-2 border border-[#af89bc] border rounded disabled:opacity-50"
+    >
+      Prev
+    </button>
+
+    {Array.from({ length: totalPages }, (_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentPage(i + 1)}
+        className={`w-10 h-10 rounded-full transition ${
+          currentPage === i + 1
+            ? "bg-[#af89bc] text-white"
+            : "bg-white border border-gray-300"
+        }`}
+      >
+        {i + 1}
+      </button>
+    ))}
+
+    <button
+      disabled={currentPage === totalPages}
+      onClick={() => setCurrentPage((prev) => prev + 1)}
+      className="px-4 py-2 border-[#af89bc] border rounded disabled:opacity-50"
+    >
+      Next
+    </button>
+  </div>
+)}
     </div>
   );
 }
