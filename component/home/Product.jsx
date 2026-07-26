@@ -71,7 +71,7 @@ useEffect(() => {
 const filteredProducts =
   activeTab === "All"
     ? products
-    : products.filter((product) => product.category === activeTab);
+    : products.filter((product) => product.tab === activeTab);
 
 useEffect(() => {
   setCurrentPage(1);
