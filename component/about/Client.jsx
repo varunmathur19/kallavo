@@ -3,13 +3,13 @@
 import Image from "next/image";
 
 const clients = [
-  { name: "Vrindavan" },
-  { name: "Bareilly" },
-  { name: "Chandigarh" },
-  { name: "Chennai" },
-  { name: "Dehradun" },
-  { name: "Faridabad" },
-  { name: "Goa" },
+  { name: "Vrindavan", image: "/client/client-1.png" },
+  { name: "Bareilly", image: "/client/client-2.png" },
+  { name: "Chandigarh", image: "/client/client-3.png" },
+  { name: "Chennai", image: "/client/client-4.png" },
+  { name: "Dehradun", image: "/client/client-5.png" },
+  { name: "Faridabad", image: "/client/client-1.png" },
+  { name: "Goa", image: "/client/client-2.png" },
 ];
 
 const topClients = [...clients, ...clients];
@@ -27,7 +27,7 @@ export default function Client() {
 
       <div className="relative z-10">
         {/* Heading */}
-        <div className="lg:mb-14  text-center md:mb-5 mb-10">
+        <div className="lg:mb-14 text-center md:mb-5 mb-10">
           <h2 className="font-lato text-3xl font-bold text-white md:text-5xl">
             Our Clients
           </h2>
@@ -45,7 +45,7 @@ export default function Client() {
               >
                 <div className="relative h-[150px] w-[150px] overflow-hidden rounded-full border-4 border-white shadow-2xl">
                   <Image
-                    src="/about/client-1.jpeg"
+                    src={item.image}
                     alt={item.name}
                     fill
                     className="object-cover"
