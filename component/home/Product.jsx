@@ -5,7 +5,8 @@ import SliceButton from "../common/Shopbutton";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { getHomeProducts } from "../../app/api/contact";
+import { getHomeProducts , updateHomeProductStock } from "../../app/api/contact";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -160,6 +161,13 @@ const currentProducts = filteredProducts.slice(
 
             {/* Image */}
             <div className="relative xl:h-[300px] lg:h-[200px] md:h-[320px] h-[300px] overflow-hidden bg-gray-50">
+              {product.outOfStock && (
+  <div className="absolute inset-0 z-20 bg-black/50 flex items-center justify-center">
+    <span className="bg-red-600 text-white px-5 py-2 rounded-full font-bold">
+      Out Of Stock
+    </span>
+  </div>
+)}
               <img
                 src={`${process.env.NEXT_PUBLIC_API_URL.replace("/api","")}/uploads/${product.image}`}
                 alt={product.name}

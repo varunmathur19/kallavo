@@ -42,3 +42,12 @@ export const getHomeProducts = async () => {
 
   return response.data;
 };
+
+export const updateHomeProductStock = async (id, data) => {
+  const response = await axios.put(
+    `${API_URL}/edit-home-product/${id}`,
+    data
+  );
+
+  return response.data;
+};
