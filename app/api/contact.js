@@ -30,7 +30,15 @@ export const contactApi = async (formData) => {
 
 };
 
-export const getHomeProducts = async () => {
-  const response = await axios.get(`${API_URL}/home-page-product`);
+// export const getHomeProducts = async () => {
+//   const response = await axios.get(`${API_URL}/home-page-product?page=${page}`);
+//   return response.data;
+// };
+
+export const getHomeProducts = async (page = 1, tab = "All") => {
+  const response = await axios.get(
+    `${API_URL}/home-page-product?page=${page}&tab=${encodeURIComponent(tab)}`
+  );
+
   return response.data;
 };

@@ -37,29 +37,30 @@ export default function ProductCard() {
 const [currentPage, setCurrentPage] = useState(1);
 const [products, setProducts] = useState([]);
 
-useEffect(() => {
-  console.log("API Calling...");
+const [totalPages, setTotalPages] = useState(1);
 
-  const fetchProducts = async () => {
-    try {
-      const res = await getHomeProducts();
-     console.log(res);
+const fetchProducts = async (page = 1) => {
+  try {
+    const res = await getHomeProducts(page);
 
-      if (res.success) {
-  setProducts(res.products);
-}
-    } catch (error) {
-      console.log(error);
+    if (res.success) {
+      setProducts(res.products);
+      setTotalPages(res.totalPages);
+      setCurrentPage(res.currentPage);
     }
-  };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-  fetchProducts();
+useEffect(() => {
+  fetchProducts(1);
 }, []);
 
   // const [activeTab, setActiveTab] = useState("All");
   const cardRef = useRef([]);
   const containerRef = useRef(null);
-  const PRODUCTS_PER_PAGE = 8;
+ 
 
 // const [activeTab, setActiveTab] = useState("All");
 // const [currentPage, setCurrentPage] = useState(1);
@@ -77,23 +78,9 @@ useEffect(() => {
   setCurrentPage(1);
 }, [activeTab]);
 
-const currentProducts =
-  activeTab === "All"
-    ? filteredProducts.slice(
-        (currentPage - 1) * PRODUCTS_PER_PAGE,
-        currentPage * PRODUCTS_PER_PAGE
-      )
-    : filteredProducts;
 
-const totalPages =
-  activeTab === "All"
-    ? Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
-    : 1;
+const currentProducts = filteredProducts;
 
-  // Filter products based on active tab
-  // const filteredProducts = activeTab === "All" 
-  //   ? products 
-  //   : products.filter(product => product.category === activeTab);
 
   useEffect(() => {
     const cards = cardRef.current.filter(Boolean);
@@ -238,7 +225,11 @@ const totalPages =
   <div className="flex justify-center gap-2 md:mt-6 mt-2 pb-10">
     <button
       disabled={currentPage === 1}
-      onClick={() => setCurrentPage((prev) => prev - 1)}
+      onClick={() => {
+  if (currentPage > 1) {
+    fetchProducts(currentPage - 1);
+  }
+}}
       className="px-4 py-2 border border-[#af89bc] border rounded disabled:opacity-50"
     >
       Prev
@@ -247,7 +238,7 @@ const totalPages =
     {Array.from({ length: totalPages }, (_, i) => (
       <button
         key={i}
-        onClick={() => setCurrentPage(i + 1)}
+        onClick={() => fetchProducts(i + 1)}
         className={`w-10 h-10 rounded-full transition ${
           currentPage === i + 1
             ? "bg-[#af89bc] text-white"
@@ -260,7 +251,11 @@ const totalPages =
 
     <button
       disabled={currentPage === totalPages}
-      onClick={() => setCurrentPage((prev) => prev + 1)}
+      onClick={() => {
+  if (currentPage < totalPages) {
+    fetchProducts(currentPage + 1);
+  }
+}}
       className="px-4 py-2 border-[#af89bc] border rounded disabled:opacity-50"
     >
       Next
