@@ -35,9 +35,9 @@ export const contactApi = async (formData) => {
 //   return response.data;
 // };
 
-export const getHomeProducts = async (page = 1, tab = "All") => {
+export const getHomeProducts = async () => {
   const response = await axios.get(
-    `${API_URL}/home-page-product?page=${page}&tab=${encodeURIComponent(tab)}`
+    `${API_URL}/home-page-product`
   );
 
   return response.data;

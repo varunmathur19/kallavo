@@ -34,27 +34,28 @@ const tabs = [
 
 export default function ProductCard() {
   const [activeTab, setActiveTab] = useState("All");
-const [currentPage, setCurrentPage] = useState(1);
+
+  const [currentPage, setCurrentPage] = useState(1);
+const productsPerPage = 8;
 const [products, setProducts] = useState([]);
 
-const [totalPages, setTotalPages] = useState(1);
 
-const fetchProducts = async (page = 1) => {
+
+const fetchProducts = async () => {
   try {
-    const res = await getHomeProducts(page);
+    const res = await getHomeProducts();
 
     if (res.success) {
       setProducts(res.products);
-      setTotalPages(res.totalPages);
-      setCurrentPage(res.currentPage);
     }
+
   } catch (error) {
     console.log(error);
   }
 };
 
 useEffect(() => {
-  fetchProducts(1);
+  fetchProducts();
 }, []);
 
   // const [activeTab, setActiveTab] = useState("All");
@@ -62,11 +63,7 @@ useEffect(() => {
   const containerRef = useRef(null);
  
 
-// const [activeTab, setActiveTab] = useState("All");
-// const [currentPage, setCurrentPage] = useState(1);
 
-// const cardRef = useRef([]);
-// const containerRef = useRef(null);
 
 
 const filteredProducts =
@@ -74,12 +71,18 @@ const filteredProducts =
     ? products
     : products.filter((product) => product.tab === activeTab);
 
-useEffect(() => {
-  setCurrentPage(1);
-}, [activeTab]);
 
 
-const currentProducts = filteredProducts;
+
+const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+const indexOfLastProduct = currentPage * productsPerPage;
+const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
+const currentProducts = filteredProducts.slice(
+  indexOfFirstProduct,
+  indexOfLastProduct
+);
 
 
   useEffect(() => {
@@ -125,9 +128,8 @@ const currentProducts = filteredProducts;
           {tabs.map((tab) => (
             <button
               key={tab}
-            onClick={() => {
+       onClick={() => {
   setActiveTab(tab);
-  setCurrentPage(1);
 }}
               className={`px-5 cursor-pointer py-2.5 rounded-full text-sm font-medium transition-all duration-300
                 ${activeTab === tab 
@@ -171,18 +173,7 @@ const currentProducts = filteredProducts;
             <div className="space-y-3 px-5 pb-5">
               
             <div className="block md:block">
-  {/* Mobile
-  <div className="flex items-center justify-between gap-3 md:hidden">
-    <h2 className="text-[18px] font-bold text-[#af89bc] leading-tight">
-      {product.name}
-    </h2>
 
-    <span className="text-xl font-bold text-orange-500 whitespace-nowrap">
-      {product.price}
-    </span>
-  </div> */}
-
-  {/* Desktop / Tablet */}
   <div className="">
     <h2 className="xl:text-[20px] lg:text-[18px] md:text-[18px] line-clamp-1 xl:line-clamp-none text-[18px] font-bold text-[#af89bc]">
       {product.name}
@@ -221,47 +212,42 @@ const currentProducts = filteredProducts;
           </div>
         ))}
       </div>
-     {totalPages > 1 && (
-  <div className="flex justify-center gap-2 md:mt-6 mt-2 pb-10">
-    <button
-      disabled={currentPage === 1}
-      onClick={() => {
-  if (currentPage > 1) {
-    fetchProducts(currentPage - 1);
-  }
-}}
-      className="px-4 py-2 border border-[#af89bc] border rounded disabled:opacity-50"
-    >
-      Prev
-    </button>
+      <div className="flex justify-center gap-2 mt-8 pb-10">
 
-    {Array.from({ length: totalPages }, (_, i) => (
-      <button
-        key={i}
-        onClick={() => fetchProducts(i + 1)}
-        className={`w-10 h-10 rounded-full transition ${
-          currentPage === i + 1
-            ? "bg-[#af89bc] text-white"
-            : "bg-white border border-gray-300"
-        }`}
-      >
-        {i + 1}
-      </button>
-    ))}
+  <button
+    disabled={currentPage === 1}
+    onClick={() => setCurrentPage(currentPage - 1)}
+    className="px-4 py-2 rounded border border-[#af89bc] disabled:opacity-50"
+  >
+    Prev
+  </button>
 
+
+  {Array.from({ length: totalPages }, (_, i) => (
     <button
-      disabled={currentPage === totalPages}
-      onClick={() => {
-  if (currentPage < totalPages) {
-    fetchProducts(currentPage + 1);
-  }
-}}
-      className="px-4 py-2 border-[#af89bc] border rounded disabled:opacity-50"
+      key={i}
+      onClick={() => setCurrentPage(i + 1)}
+      className={`w-10 h-10 rounded-full ${
+        currentPage === i + 1
+          ? "bg-[#af89bc] text-white"
+          : "bg-white border"
+      }`}
     >
-      Next
+      {i + 1}
     </button>
-  </div>
-)}
+  ))}
+
+
+  <button
+    disabled={currentPage === totalPages}
+    onClick={() => setCurrentPage(currentPage + 1)}
+    className="px-4 py-2 rounded border border-[#af89bc] disabled:opacity-50"
+  >
+    Next
+  </button>
+
+</div>
+  
     </div>
   );
 }
