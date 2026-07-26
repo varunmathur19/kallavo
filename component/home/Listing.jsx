@@ -2,87 +2,141 @@
 
 import Image from "next/image";
 import SliceButton from "../common/Shopbutton";
+import Link from "next/link";
 
 const products = [
   {
     id: 1,
-    title: "Classic Leather Notebook",
-    desc: "Premium leather notebook for daily journaling.",
+    title: "Premium Wall Decor",
+    category: "Wall Decor",
     price: "₹1,499",
-    image: "https://images.pexels.com/photos/7319307/pexels-photo-7319307.jpeg",
-    badge: null,
+    image: "/home/product-1.png",
   },
   {
     id: 2,
-    title: "Bamboo Sunglasses",
-    desc: "Eco-friendly and stylish bamboo frame sunglasses.",
+    title: "Modern Wall Frame",
+    category: "Wall Decor",
     price: "₹2,299",
-    image: "https://images.pexels.com/photos/2499615/pexels-photo-2499615.jpeg",
-    badge: "Sale",
+    image: "/home/product-2.png",
   },
   {
     id: 3,
-    title: "Eco Water Bottle",
-    desc: "Sustainable, leak-proof, BPA-free hydration.",
+    title: "Festive Decoration",
+    category: "Home & Festive Decor",
     price: "₹899",
-    image: "https://images.pexels.com/photos/3945656/pexels-photo-3945656.jpeg",
-    badge: null,
+    image: "/home/product-3.png",
   },
   {
     id: 4,
-    title: "Minimal Lounge Chair",
-    desc: "Comfortable, modern design with soft cushions.",
-    price: "₹18,999",
-    image: "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg",
-    badge: null,
+    title: "Corporate Gift Box",
+    category: "Corporate Gifting",
+    price: "₹1,899",
+    image: "/home/product-4.png",
   },
   {
     id: 5,
-    title: "Premium Watch",
-    desc: "Elegant timepiece with sleek modern design.",
-    price: "₹24,999",
-    image: "https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg",
-    badge: null,
+    title: "Office Branding Kit",
+    category: "Corporate Branding",
+    price: "₹2,999",
+    image: "/home/product-1.png",
   },
   {
     id: 6,
-    title: "Smart Wooden Lamp",
-    desc: "Aesthetic, warm, and modern mood lighting.",
-    price: "₹3,299",
-    image: "https://images.pexels.com/photos/5632392/pexels-photo-5632392.jpeg",
-    badge: null,
+    title: "Customised Photo Frame",
+    category: "Customised Gift Items",
+    price: "₹1,299",
+    image: "/home/product-4.png",
   },
   {
     id: 7,
-    title: "Wireless Headphones",
-    desc: "Crystal-clear sound, noise-canceling tech.",
-    price: "₹6,499",
-    image: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
-    badge: null,
+    title: "Personalised Name Gift",
+    category: "Personalised Gift",
+    price: "₹999",
+    image: "/home/product-2.png",
   },
   {
     id: 8,
-    title: "Running Sneakers",
-    desc: "Lightweight, breathable running shoes.",
-    price: "₹4,299",
-    image: "https://images.pexels.com/photos/7319313/pexels-photo-7319313.jpeg",
-    badge: null,
+    title: "MDF Printed Cutout",
+    category: "MDF Printed Cutout",
+    price: "₹699",
+    image: "/home/product-4.png",
   },
   {
     id: 9,
-    title: "Travel Backpack",
-    desc: "Durable and stylish for all adventures.",
-    price: "₹5,499",
-    image: "https://images.pexels.com/photos/1289903/pexels-photo-1289903.jpeg",
-    badge: null,
+    title: "Designer Rangoli",
+    category: "Rangoli Design",
+    price: "₹599",
+    image: "/home/product-2.png",
   },
   {
     id: 10,
-    title: "Ultrabook Laptop",
-    desc: "Lightweight, powerful, and long battery life.",
-    price: "₹89,999",
-    image: "https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg",
-    badge: null,
+    title: "MDF Cutout",
+    category: "MDF Cutout",
+    price: "₹799",
+    image: "/home/product-1.png",
+  },
+  {
+    id: 11,
+    title: "Rakhi Base",
+    category: "Rakhi Base",
+    price: "₹299",
+    image: "/home/product-3.png",
+  },
+  {
+    id: 12,
+    title: "Acrylic Cutout",
+    category: "Acrylic Cutout",
+    price: "₹999",
+    image: "/home/product-4.png",
+  },
+  {
+    id: 13,
+    title: "UV & Insert Sheet",
+    category: "UV & Insert Sheets",
+    price: "₹499",
+    image: "/home/product-2.png",
+  },
+  {
+    id: 14,
+    title: "Premium Name Plate",
+    category: "Name Plates",
+    price: "₹1,499",
+    image: "/home/product-3.png",
+  },
+  {
+    id: 15,
+    title: "Wooden Wall Hanging",
+    category: "Wall Hangings",
+    price: "₹1,799",
+    image: "/home/product-1.png",
+  },
+  {
+    id: 16,
+    title: "Luxury Wall Decor",
+    category: "Premium Wall Decor",
+    price: "₹3,999",
+    image: "/home/product-1.png",
+  },
+  {
+    id: 17,
+    title: "LED Clip-On Frame",
+    category: "LED Clip-On Frames",
+    price: "₹2,499",
+    image: "/home/product-2.png",
+  },
+  {
+    id: 18,
+    title: "Gift Hamper",
+    category: "Hampers",
+    price: "₹1,999",
+    image: "/home/product-3.png",
+  },
+  {
+    id: 19,
+    title: "Custom Neon Sign Board",
+    category: "Neon Sign Board",
+    price: "₹4,999",
+    image: "/home/product-4.png",
   },
 ];
 
@@ -100,52 +154,40 @@ export default function Listing() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6 gap-3">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="cursor-pointer bg-white rounded-sm md:rounded-2xl overflow-hidden shadow-none md:shadow-md md:hover:shadow-xl transition-all duration-300 md:hover:-translate-y-1"
-            >
-              <div className="relative">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  width={400}
-                  height={300}
-                  className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+  {products.map((product) => (
+    <Link
+      key={product.id}
+      href={`/product`}
+      className="block"
+    >
+      <div className="cursor-pointer bg-white rounded-sm md:rounded-2xl overflow-hidden shadow-none md:shadow-md md:hover:shadow-xl transition-all duration-300 md:hover:-translate-y-1">
+        <div className="relative">
+          <Image
+            src={product.image}
+            alt={product.title}
+            width={400}
+            height={300}
+            className="w-full h-52 object-cover transition-transform duration-500 hover:scale-105"
+          />
 
-                {product.badge && (
-                  <span className="absolute top-4 left-4 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    {product.badge}
-                  </span>
-                )}
-              </div>
-
-              <div className="md:p-5 p-2">
-                <h3 className="font-semibold text-center text-sm md:text-lg text-gray-900 ">
-                  {product.title}
-                </h3>
-                {/* <p className="text-gray-600 text-sm mt-1 line-clamp-1">
-                  {product.desc}
-                </p> */}
-
-                <div className="mt-4 flex items-center justify-between">
-                  {/* <span className="text-2xl font-bold text-[#af89bc]">
-                    {product.price}
-                  </span> */}
-                  {/* <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
-                    Add to Cart
-                  </button> */}
-                {/* <SliceButton className="cursor-pointer ">
-                  Add to Cart
-                </SliceButton> */}
-                </div>
-              </div>
-            </div>
-          ))}
+          {product.badge && (
+            <span className="absolute top-4 left-4 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+              {product.badge}
+            </span>
+          )}
         </div>
+
+        <div className="md:p-5 p-2">
+          <h3 className="font-semibold text-center text-sm md:text-lg text-gray-900">
+            {product.title}
+          </h3>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
         <div className="flex justify-center mt-10">
-  <SliceButton href="/products" className="cursor-pointer">
+  <SliceButton href="/product" className="cursor-pointer">
     View More
   </SliceButton>
 </div>

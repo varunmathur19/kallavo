@@ -15,52 +15,309 @@ const categories = [
 
 const products = {
   1: [
-    { id: "saree-1", name: "Royal Silk Saree", image: "/product/product1.png", price: 6500 },
-    { id: "saree-2", name: "Banarasi Saree", image: "/product/product2.jpg", price: 12500 },
-    { id: "saree-3", name: "Designer Saree", image: "/product/product3.jpg", price: 9800 },
-    { id: "saree-4", name: "Wedding Saree", image: "/product/product4.jpg", price: 18500 },
-    { id: "saree-5", name: "Party Wear Saree", image: "/product/product5.jpg", price: 7500 },
-    { id: "saree-6", name: "Cotton Saree", image: "/product/product6.jpg", price: 4200 },
+    {
+      id: "saree-1",
+      name: "Royal Silk Saree",
+      image: "/product/product1.png",
+      price: 6500,
+      size: ["4 Inch", "6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "saree-2",
+      name: "Banarasi Saree",
+      image: "/product/product2.jpg",
+      price: 12500,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: true,
+    },
+    {
+      id: "saree-3",
+      name: "Designer Saree",
+      image: "/product/product3.jpg",
+      price: 9800,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "saree-4",
+      name: "Wedding Saree",
+      image: "/product/product4.jpg",
+      price: 18500,
+      size: ["4 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "saree-5",
+      name: "Party Wear Saree",
+      image: "/product/product5.jpg",
+      price: 7500,
+      size: ["4 Inch", "6 Inch", "8 Inch"],
+      outOfStock: true,
+    },
+    {
+      id: "saree-6",
+      name: "Cotton Saree",
+      image: "/product/product6.jpg",
+      price: 4200,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
   ],
+
   2: [
-    { id: "lehenga-1", name: "Bridal Lehenga", image: "/product/product2.jpg", price: 22500 },
-    { id: "lehenga-2", name: "Velvet Lehenga", image: "/product/product4.jpg", price: 16800 },
-    { id: "lehenga-3", name: "Designer Lehenga", image: "/product/product6.jpg", price: 14200 },
-    { id: "lehenga-4", name: "Floral Lehenga", image: "/product/product1.png", price: 9800 },
-    { id: "lehenga-5", name: "Party Lehenga", image: "/product/product5.jpg", price: 13500 },
-    { id: "lehenga-6", name: "Classic Lehenga", image: "/product/product3.jpg", price: 7500 },
+    {
+      id: "lehenga-1",
+      name: "Bridal Lehenga",
+      image: "/product/product2.jpg",
+      price: 22500,
+      size: ["4 Inch", "6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "lehenga-2",
+      name: "Velvet Lehenga",
+      image: "/product/product4.jpg",
+      price: 16800,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "lehenga-3",
+      name: "Designer Lehenga",
+      image: "/product/product6.jpg",
+      price: 14200,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: true,
+    },
+    {
+      id: "lehenga-4",
+      name: "Floral Lehenga",
+      image: "/product/product1.png",
+      price: 9800,
+      size: ["4 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "lehenga-5",
+      name: "Party Lehenga",
+      image: "/product/product5.jpg",
+      price: 13500,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "lehenga-6",
+      name: "Classic Lehenga",
+      image: "/product/product3.jpg",
+      price: 7500,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: true,
+    },
   ],
+
   3: [
-    { id: "kurti-1", name: "Printed Kurti", image: "/product/product3.jpg", price: 1800 },
-    { id: "kurti-2", name: "Cotton Kurti", image: "/product/product6.jpg", price: 2200 },
-    { id: "kurti-3", name: "Anarkali Kurti", image: "/product/product2.jpg", price: 3200 },
-    { id: "kurti-4", name: "Straight Kurti", image: "/product/product5.jpg", price: 2500 },
-    { id: "kurti-5", name: "Designer Kurti", image: "/product/product1.png", price: 4500 },
-    { id: "kurti-6", name: "Festive Kurti", image: "/product/product4.jpg", price: 3800 },
+    {
+      id: "kurti-1",
+      name: "Printed Kurti",
+      image: "/product/product3.jpg",
+      price: 1800,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "kurti-2",
+      name: "Cotton Kurti",
+      image: "/product/product6.jpg",
+      price: 2200,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "kurti-3",
+      name: "Anarkali Kurti",
+      image: "/product/product2.jpg",
+      price: 3200,
+      size: ["4 Inch", "6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "kurti-4",
+      name: "Straight Kurti",
+      image: "/product/product5.jpg",
+      price: 2500,
+      size: ["4 Inch", "8 Inch"],
+      outOfStock: true,
+    },
+    {
+      id: "kurti-5",
+      name: "Designer Kurti",
+      image: "/product/product1.png",
+      price: 4500,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "kurti-6",
+      name: "Festive Kurti",
+      image: "/product/product4.jpg",
+      price: 3800,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
   ],
+
   4: [
-    { id: "suit-1", name: "Cotton Suit", image: "/product/product4.jpg", price: 5200 },
-    { id: "suit-2", name: "Silk Suit", image: "/product/product1.png", price: 8900 },
-    { id: "suit-3", name: "Printed Suit", image: "/product/product5.jpg", price: 4800 },
-    { id: "suit-4", name: "Designer Suit", image: "/product/product3.jpg", price: 12500 },
-    { id: "suit-5", name: "Party Suit", image: "/product/product6.jpg", price: 9800 },
-    { id: "suit-6", name: "Wedding Suit", image: "/product/product2.jpg", price: 14500 },
+    {
+      id: "suit-1",
+      name: "Cotton Suit",
+      image: "/product/product4.jpg",
+      price: 5200,
+      size: ["4 Inch", "6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "suit-2",
+      name: "Silk Suit",
+      image: "/product/product1.png",
+      price: 8900,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: true,
+    },
+    {
+      id: "suit-3",
+      name: "Printed Suit",
+      image: "/product/product5.jpg",
+      price: 4800,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "suit-4",
+      name: "Designer Suit",
+      image: "/product/product3.jpg",
+      price: 12500,
+      size: ["4 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "suit-5",
+      name: "Party Suit",
+      image: "/product/product6.jpg",
+      price: 9800,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "suit-6",
+      name: "Wedding Suit",
+      image: "/product/product2.jpg",
+      price: 14500,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: true,
+    },
   ],
+
   5: [
-    { id: "indo-1", name: "Fusion Wear", image: "/product/product5.jpg", price: 6800 },
-    { id: "indo-2", name: "Indo-Western Dress", image: "/product/product3.jpg", price: 9200 },
-    { id: "indo-3", name: "Ethnic Gown", image: "/product/product1.png", price: 13800 },
-    { id: "indo-4", name: "Cape Style Dress", image: "/product/product6.jpg", price: 10500 },
-    { id: "indo-5", name: "Modern Kurta Set", image: "/product/product2.jpg", price: 7200 },
-    { id: "indo-6", name: "Designer Fusion", image: "/product/product4.jpg", price: 8500 },
+    {
+      id: "indo-1",
+      name: "Fusion Wear",
+      image: "/product/product5.jpg",
+      price: 6800,
+      size: ["4 Inch", "6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "indo-2",
+      name: "Indo-Western Dress",
+      image: "/product/product3.jpg",
+      price: 9200,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "indo-3",
+      name: "Ethnic Gown",
+      image: "/product/product1.png",
+      price: 13800,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: true,
+    },
+    {
+      id: "indo-4",
+      name: "Cape Style Dress",
+      image: "/product/product6.jpg",
+      price: 10500,
+      size: ["4 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "indo-5",
+      name: "Modern Kurta Set",
+      image: "/product/product2.jpg",
+      price: 7200,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "indo-6",
+      name: "Designer Fusion",
+      image: "/product/product4.jpg",
+      price: 8500,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
   ],
+
   6: [
-    { id: "bridal-1", name: "Luxury Bridal Set", image: "/product/product6.jpg", price: 24500 },
-    { id: "bridal-2", name: "Bridal Collection", image: "/product/product5.jpg", price: 19800 },
-    { id: "bridal-3", name: "Premium Bridal Wear", image: "/product/product4.jpg", price: 17200 },
-    { id: "bridal-4", name: "Wedding Collection", image: "/product/product3.jpg", price: 21500 },
-    { id: "bridal-5", name: "Royal Bride Look", image: "/product/product2.jpg", price: 18900 },
-    { id: "bridal-6", name: "Exclusive Bridal", image: "/product/product1.png", price: 26500 },
+    {
+      id: "bridal-1",
+      name: "Luxury Bridal Set",
+      image: "/product/product6.jpg",
+      price: 24500,
+      size: ["4 Inch", "6 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "bridal-2",
+      name: "Bridal Collection",
+      image: "/product/product5.jpg",
+      price: 19800,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: true,
+    },
+    {
+      id: "bridal-3",
+      name: "Premium Bridal Wear",
+      image: "/product/product4.jpg",
+      price: 17200,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "bridal-4",
+      name: "Wedding Collection",
+      image: "/product/product3.jpg",
+      price: 21500,
+      size: ["4 Inch", "8 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "bridal-5",
+      name: "Royal Bride Look",
+      image: "/product/product2.jpg",
+      price: 18900,
+      size: ["4 Inch", "6 Inch"],
+      outOfStock: false,
+    },
+    {
+      id: "bridal-6",
+      name: "Exclusive Bridal",
+      image: "/product/product1.png",
+      price: 26500,
+      size: ["6 Inch", "8 Inch"],
+      outOfStock: true,
+    },
   ],
 };
 
@@ -119,7 +376,7 @@ export default function ProductPage() {
                 <span className="text-[11px] tracking-[0.2em] uppercase text-[#6B1E2B]">
                   Max Price
                 </span>
-                <span className="font-serif text-lg text-[#1F3D2B]">
+                <span className="font-serif text- text-[#1F3D2B]">
                   ₹{price.toLocaleString("en-IN")}
                 </span>
               </div>
@@ -157,22 +414,38 @@ export default function ProductPage() {
         className="overflow-hidden bg-white block hover:shadow-md transition-shadow duration-300"
       >
         <div className="relative overflow-hidden">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full xl:h-[300px] lg:h-[230px] object-cover transition-transform duration-500 hover:scale-105"
-          />
+          {product.outOfStock && (
+  <div className="absolute top-3 left-3 z-20 rounded-full bg-red-600 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white shadow-lg">
+    Out of Stock
+  </div>
+)}
+         <img
+  src={product.image}
+  alt={product.name}
+  className="w-full xl:h-[300px] lg:h-[230px] object-cover transition-transform duration-500 hover:scale-105"
+/>
         </div>
         <div className="p-4">
           <h3 className="text-lg font-semibold text-[#1F3D2B]">
             {product.name}
           </h3>
-          <p className="mt-1 text-sm font-medium text-[#af89bc]">
+       
+          <p className="mt-1 text-lg font-medium text-[#af89bc]">
             ₹{product.price.toLocaleString("en-IN")}
           </p>
-          <p className="text-xs text-gray-500">
+         <div className="mt-2 flex flex-wrap gap-2">
+  {product.size.map((item, index) => (
+    <span
+      key={index}
+      className="inline-flex items-center rounded-full bg-[#f3e8f7] xl:px-4 lg:px-3 md:px-3 px-4 py-[6px] text-xs font-medium text-[#af89bc]"
+    >
+      {item}
+    </span>
+  ))}
+</div>
+          {/* <p className="text-sm text-gray-500 lg:mt-2">
             Under ₹{price.toLocaleString("en-IN")}
-          </p>
+          </p> */}
 
           <div className="group relative mt-4 w-full overflow-hidden border border-transparent bg-[#af89bc] py-2 text-white text-center transition-all duration-500 hover:border-[#af89bc]">
             <span className="absolute inset-0 -translate-x-full bg-white transition-transform duration-500 ease-in-out group-hover:translate-x-0"></span>

@@ -9,18 +9,189 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { name: "Luxury Ceramic Vase", category: "Home Decor", price: "₹3,999",  image: "/home/product-1.png" },
-  { name: "Elegant Temple Jar", category: "Premium Collection", price: "₹4,499", image: "/home/product-1.png" },
-  { name: "Modern Wall Plate", category: "Wall Decoration", price: "₹2,999",  image: "/home/product-1.png" },
-  { name: "Designer Table Decor", category: "Table Accessories", price: "₹3,499",image: "/home/product-1.png" },
+  // Wall Decor
+  {
+    name: "Modern Wall Decor",
+    category: "Wall Decor",
+    price: "₹1,499",
+    image: "/home/product-1.png",
+  },
+  {
+    name: "Premium Wall Frame",
+    category: "Wall Decor",
+    price: "₹2,499",
+    image: "/home/product-1.png",
+  },
+
+  // Home & Festive Decor
+  {
+    name: "Festival Decoration Set",
+    category: "Home & Festive Decor",
+    price: "₹999",
+    image: "/home/product-3.png",
+  },
+  {
+    name: "Decorative Diya Stand",
+    category: "Home & Festive Decor",
+    price: "₹799",
+    image: "/home/product-3.png",
+  },
+
+  // Corporate Gifting
+  {
+    name: "Corporate Gift Box",
+    category: "Corporate Gifting",
+    price: "₹1,999",
+    image: "/home/product-1.png",
+  },
+  {
+    name: "Premium Office Hamper",
+    category: "Corporate Gifting",
+    price: "₹2,499",
+    image: "/home/product-2.png",
+  },
+
+  // Corporate Branding
+  {
+    name: "Office Branding Kit",
+    category: "Corporate Branding",
+    price: "₹3,999",
+    image: "/home/product-4.png",
+  },
+
+  // Customised Gift Items
+  {
+    name: "Custom Gift Box",
+    category: "Customised Gift Items",
+    price: "₹1,299",
+    image: "/home/product-3.png",
+  },
+
+  // Personalised Gift
+  {
+    name: "Personalised Mug",
+    category: "Personalised Gift",
+    price: "₹599",
+    image: "/home/product-2.png",
+  },
+
+  // MDF Printed Cutout
+  {
+    name: "MDF Printed Cutout",
+    category: "MDF Printed Cutout",
+    price: "₹499",
+    image: "/home/product-1.png",
+  },
+
+  // Rangoli Design
+  {
+    name: "Designer Rangoli",
+    category: "Rangoli Design",
+    price: "₹899",
+    image: "/home/product-1.png",
+  },
+
+  // MDF Cutout
+  {
+    name: "MDF Cutout",
+    category: "MDF Cutout",
+    price: "₹699",
+    image: "/home/product-2.png",
+  },
+
+  // Rakhi Base
+  {
+    name: "Designer Rakhi Base",
+    category: "Rakhi Base",
+    price: "₹299",
+    image: "/home/product-3.png",
+  },
+
+  // Acrylic Cutout
+  {
+    name: "Acrylic Cutout",
+    category: "Acrylic Cutout",
+    price: "₹799",
+    image: "/home/product-4.png",
+  },
+
+  // UV & Insert Sheets
+  {
+    name: "UV Printed Sheet",
+    category: "UV & Insert Sheets",
+    price: "₹599",
+    image: "/home/product-1.png",
+  },
+
+  // Name Plates
+  {
+    name: "Wooden Name Plate",
+    category: "Name Plates",
+    price: "₹999",
+    image: "/home/product-3.png",
+  },
+
+  // Wall Hangings
+  {
+    name: "Decor Wall Hanging",
+    category: "Wall Hangings",
+    price: "₹1,499",
+    image: "/home/product-1.png",
+  },
+
+  // Premium Wall Decor
+  {
+    name: "Luxury Wall Decor",
+    category: "Premium Wall Decor",
+    price: "₹3,999",
+    image: "/home/product-4.png",
+  },
+
+  // LED Clip-On Frames
+  {
+    name: "LED Clip-On Frame",
+    category: "LED Clip-On Frames",
+    price: "₹2,499",
+    image: "/home/product-3.png",
+  },
+
+  // Hampers
+  {
+    name: "Gift Hamper",
+    category: "Hampers",
+    price: "₹1,799",
+    image: "/home/product-1.png",
+  },
+
+  // Neon Sign Board
+  {
+    name: "Custom Neon Sign",
+    category: "Neon Sign Board",
+    price: "₹4,999",
+    image: "/home/product-1.png",
+  },
 ];
 
 const tabs = [
   "All",
-  "Home Decor",
-  "Premium Collection",
-  "Wall Decoration",
-  "Table Accessories"
+  "Wall Decor",
+  "Home & Festive Decor",
+  "Corporate Gifting",
+  "Corporate Branding",
+  "Customised Gift Items",
+  "Personalised Gift",
+  "MDF Printed Cutout",
+  "Rangoli Design",
+  "MDF Cutout",
+  "Rakhi Base",
+  "Acrylic Cutout",
+  "UV & Insert Sheets",
+  "Name Plates",
+  "Wall Hangings",
+  "Premium Wall Decor",
+  "LED Clip-On Frames",
+  "Hampers",
+  "Neon Sign Board",
 ];
 
 export default function ProductCard() {
