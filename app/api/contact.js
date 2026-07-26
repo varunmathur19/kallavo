@@ -1,4 +1,5 @@
 import { API_URL } from "../config/api";
+import axios from "axios";
 
 
 export const contactApi = async (formData) => {
@@ -27,4 +28,9 @@ export const contactApi = async (formData) => {
 
     return data;
 
+};
+
+export const getHomeProducts = async () => {
+  const response = await axios.get(`${API_URL}/home-page-product`);
+  return response.data;
 };

@@ -5,193 +5,10 @@ import SliceButton from "../common/Shopbutton";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getHomeProducts } from "../../app/api/contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const products = [
-  // Wall Decor
-  {
-    name: "Modern Wall Decor",
-    category: "Wall Decor",
-    price: "₹1,499",
-    image: "/home/product-1.png",
-    sizes: ["4 inch", "6 inch"]
-  },
-  {
-    name: "Premium Wall Frame",
-    category: "Wall Decor",
-    price: "₹2,499",
-    image: "/home/product-1.png",
-    sizes: ["6 inch", "8 inch"]
-  },
-
-  // Home & Festive Decor
-  {
-    name: "Festival Decoration Set",
-    category: "Home & Festive Decor",
-    price: "₹999",
-    image: "/home/product-3.png",
-    sizes: ["4 inch", "6 inch", "8 inch"]
-  },
-  {
-    name: "Decorative Diya Stand",
-    category: "Home & Festive Decor",
-    price: "₹799",
-    image: "/home/product-3.png",
-    sizes: ["4 inch", "6 inch"]
-  },
-
-  // Corporate Gifting
-  {
-    name: "Corporate Gift Box",
-    category: "Corporate Gifting",
-    price: "₹1,999",
-    image: "/home/product-1.png",
-    sizes: ["6 inch", "8 inch"]
-  },
-  {
-    name: "Premium Office Hamper",
-    category: "Corporate Gifting",
-    price: "₹2,499",
-    image: "/home/product-2.png",
-    sizes: ["4 inch", "6 inch", "8 inch"]
-  },
-
-  // Corporate Branding
-  {
-    name: "Office Branding Kit",
-    category: "Corporate Branding",
-    price: "₹3,999",
-    image: "/home/product-4.png",
-    sizes: ["6 inch", "8 inch"]
-  },
-
-  // Customised Gift Items
-  {
-    name: "Custom Gift Box",
-    category: "Customised Gift Items",
-    price: "₹1,299",
-    image: "/home/product-3.png",
-    sizes: ["4 inch", "6 inch"]
-  },
-
-  // Personalised Gift
-  {
-    name: "Personalised Mug",
-    category: "Personalised Gift",
-    price: "₹599",
-    image: "/home/product-2.png",
-    sizes: ["4 inch", "6 inch", "8 inch"]
-  },
-
-  // MDF Printed Cutout
-  {
-    name: "MDF Printed Cutout",
-    category: "MDF Printed Cutout",
-    price: "₹499",
-    image: "/home/product-1.png",
-    sizes: ["4 inch", "6 inch"]
-  },
-
-  // Rangoli Design
-  {
-    name: "Designer Rangoli",
-    category: "Rangoli Design",
-    price: "₹899",
-    image: "/home/product-1.png",
-    sizes: ["6 inch", "8 inch"]
-  },
-
-  // MDF Cutout
-  {
-    name: "MDF Cutout",
-    category: "MDF Cutout",
-    price: "₹699",
-    image: "/home/product-2.png",
-    sizes: ["4 inch", "6 inch", "8 inch"]
-  },
-
-  // Rakhi Base
-  {
-    name: "Designer Rakhi Base",
-    category: "Rakhi Base",
-    price: "₹299",
-    image: "/home/product-3.png",
-    sizes: ["4 inch", "6 inch"]
-  },
-
-  // Acrylic Cutout
-  {
-    name: "Acrylic Cutout",
-    category: "Acrylic Cutout",
-    price: "₹799",
-    image: "/home/product-4.png",
-    sizes: ["6 inch", "8 inch"]
-  },
-
-  // UV & Insert Sheets
-  {
-    name: "UV Printed Sheet",
-    category: "UV & Insert Sheets",
-    price: "₹599",
-    image: "/home/product-1.png",
-    sizes: ["4 inch", "6 inch", "8 inch"]
-  },
-
-  // Name Plates
-  {
-    name: "Wooden Name Plate",
-    category: "Name Plates",
-    price: "₹999",
-    image: "/home/product-3.png",
-    sizes: ["6 inch", "8 inch"]
-  },
-
-  // Wall Hangings
-  {
-    name: "Decor Wall Hanging",
-    category: "Wall Hangings",
-    price: "₹1,499",
-    image: "/home/product-1.png",
-    sizes: ["4 inch", "6 inch"]
-  },
-
-  // Premium Wall Decor
-  {
-    name: "Luxury Wall Decor",
-    category: "Premium Wall Decor",
-    price: "₹3,999",
-    image: "/home/product-4.png",
-    sizes: ["4 inch", "6 inch", "8 inch"]
-  },
-
-  // LED Clip-On Frames
-  {
-    name: "LED Clip-On Frame",
-    category: "LED Clip-On Frames",
-    price: "₹2,499",
-    image: "/home/product-3.png",
-    sizes: ["6 inch", "8 inch"]
-  },
-
-  // Hampers
-  {
-    name: "Gift Hamper",
-    category: "Hampers",
-    price: "₹1,799",
-    image: "/home/product-1.png",
-    sizes: ["4 inch", "6 inch"]
-  },
-
-  // Neon Sign Board
-  {
-    name: "Custom Neon Sign",
-    category: "Neon Sign Board",
-    price: "₹4,999",
-    image: "/home/product-1.png",
-    sizes: ["4 inch", "6 inch", "8 inch"]
-  },
-];
 
 const tabs = [
   "All",
@@ -218,6 +35,26 @@ const tabs = [
 export default function ProductCard() {
   const [activeTab, setActiveTab] = useState("All");
 const [currentPage, setCurrentPage] = useState(1);
+const [products, setProducts] = useState([]);
+
+useEffect(() => {
+  console.log("API Calling...");
+
+  const fetchProducts = async () => {
+    try {
+      const res = await getHomeProducts();
+     console.log(res);
+
+      if (res.success) {
+  setProducts(res.products);
+}
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchProducts();
+}, []);
 
   // const [activeTab, setActiveTab] = useState("All");
   const cardRef = useRef([]);
@@ -229,6 +66,7 @@ const [currentPage, setCurrentPage] = useState(1);
 
 // const cardRef = useRef([]);
 // const containerRef = useRef(null);
+
 
 const filteredProducts =
   activeTab === "All"
@@ -333,8 +171,8 @@ const totalPages =
 
             {/* Image */}
             <div className="relative xl:h-[300px] lg:h-[200px] md:h-[320px] h-[300px] overflow-hidden bg-gray-50">
-              <Image
-                src={product.image}
+              <img
+                src={`${process.env.NEXT_PUBLIC_API_URL.replace("/api","")}/uploads/${product.image}`}
                 alt={product.name}
                 fill
                 className="object-cover md:p-5 p-2 rounded-[20px] md:rounded-[0px] transition-transform duration-700 hover:scale-105"
