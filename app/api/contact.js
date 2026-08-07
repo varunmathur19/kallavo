@@ -51,3 +51,11 @@ export const updateHomeProductStock = async (id, data) => {
 
   return response.data;
 };
+
+export const getCollectionHome = async () => {
+  const response = await axios.get(
+    `${API_URL}/collection-home`
+  );
+
+  return response.data;
+};

@@ -155,9 +155,9 @@ const currentProducts = filteredProducts.slice(
             className="relative overflow-hidden rounded-2xl bg-white shadow-xl hover:shadow-2xl will-change-transform"
           >
             {/* Sale Ribbon */}
-            <div className="absolute left-[-45px] top-6 z-20 w-44 -rotate-45 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-500 py-2 text-center text-xs font-bold uppercase tracking-widest text-white shadow-lg">
+            {/* <div className="absolute left-[-45px] top-6 z-20 w-44 -rotate-45 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-500 py-2 text-center text-xs font-bold uppercase tracking-widest text-white shadow-lg">
               30% Off
-            </div>
+            </div> */}
 
             {/* Image */}
             <div className="relative xl:h-[300px] lg:h-[200px] md:h-[320px] h-[300px] overflow-hidden bg-gray-50">
@@ -213,9 +213,16 @@ const currentProducts = filteredProducts.slice(
   </div>
 </div>
 
-              <SliceButton className="w-full cursor-pointer">
-                Add to Cart
-              </SliceButton>
+         <SliceButton
+  disabled={product.outOfStock}
+  className={`w-full ${
+    product.outOfStock
+      ? "cursor-not-allowed opacity-50 pointer-events-none"
+      : "cursor-pointer"
+  }`}
+>
+  {product.outOfStock ? "Out of Stock" : "Add to Cart"}
+</SliceButton>
             </div>
           </div>
         ))}

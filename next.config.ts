@@ -30,6 +30,7 @@
 // };
 
 // export default nextConfig;
+
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -51,8 +52,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
-
-      // Local Backend Images
       {
         protocol: "http",
         hostname: "localhost",
